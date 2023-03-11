@@ -1,9 +1,4 @@
-// var wallpaper = $.ajax({
-//     url : "static/data/json/wallpapers.json",
-//     type : "get",
-//     async: false,
-//     error: "https://cdn.staticaly.com/gh/DaiwuShen/daiwuImageBed@main/wallhere/daiwus-anime-girl-1275965-wallhere.46hzxvakciyo.jpg"
-// }).responseJSON;
+// 
 // let Today = new Date();
 // background_image = wallpaper[(Today.getDate() < wallpaper.length)? (Today.getDate() % wallpaper.length) : (wallpaper.length % Today.getDate())]
 // document.getElementById("header").style.backgroundImage = "url(\"" + background_image + "\")";//每日一图
@@ -11,29 +6,20 @@
 // console.log("wallpaper: " + (Today.getDate() < wallpaper.length)? Today.getDate() % wallpaper.length : wallpaper.length % Today.getDate())
 
 $(document).ready(function(){
-    var site_setuptime = insertCount();
+    var site_setuptime = insertCount(alticle_count);
     insertAbstract();
     setInterval(function(){
 	$("#site-runtime").text(delta_time(Date.parse(site_setuptime), Date()));
     },1000)})
 
 // 获取统计数据
-function insertCount(){
-    var jsondata=$.ajax({
-	url: "static/data/json/data_count.json",
-	type: "get",
-	async: false,
-	error: function (XMLHttpRequest, textStatus, errorThrown) {
-            console.log(XMLHttpRequest.status);
-            console.log(XMLHttpRequest.readyState);
-            console.log(textStatus);}
-    }).responseJSON;
+function insertCount(jsondata){
     // 插入头像
     $("#avatar")[0].src = jsondata["avatar"];
     // 生成公告
     for(var item in jsondata["announce"]){
 	$("#left-announcement").append("<div class=\"data-cantainer\"><p>"+ jsondata["announce"][item] +"</p></div>");}
-    $("#alticle-count")[0].innerText = jsondata["alticles-count"];
+    $("#alticle-count").text(jsondata["alticles-count"]);
     var tags=jsondata["tags"];
     var classi=jsondata["classification"];
     var achive=jsondata["achive"];
@@ -50,7 +36,7 @@ function createBasecount(jsondata){
     $("#base-data-box").children("div").children("p")[1].innerText=jsondata["classifications-count"];
     $("#base-data-box").children("div").children("p")[2].innerText=jsondata["tags-count"];
     $("#alticle-count").text(jsondata["alticle-count"]);
-    $("#recently-upate").text(jsondata["last-update"]);
+    $("#recently-update").text(jsondata["last-update"]);
 }
 
 // 生成标签列表

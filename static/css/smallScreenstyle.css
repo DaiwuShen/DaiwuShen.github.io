@@ -50,12 +50,6 @@ h3{
     #content-layout{
         min-width: 100px;
     }
-    #header{
-        background-attachment: inherit;
-	background-repeat: round;
-	height: 30vh;
-	width: 100% margin-bottom: 16px;
-    }
     #next-page{
         display: none;
     }

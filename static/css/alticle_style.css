@@ -64,10 +64,10 @@ div.alticle-title {
 }
 
 #header {
-	background-attachment: inherit;
-	background-repeat: round;
+	background-attachment: fixed;
+	background-repeat: space;
 	height: 30vh;
-	width: 100% margin-bottom: 16px;
+	width: 100% ;
 }
 
 #left-content{

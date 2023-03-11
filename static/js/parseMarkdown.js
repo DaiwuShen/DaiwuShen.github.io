@@ -49,8 +49,6 @@ function parseMdblockquote(str){
 		}
 	    }
 	    str = str.replace(quotehtml, "<div id=\"blockquote_" + j + "\"></div>");
-	    console.log(quotehtml);
-	    console.log(str.indexOf(quotehtml));
 	    for(var i = 0; i < blockquote.length; i++){
 		html = "";
 		for(var j = 0; j < blockquote[i].length; j++){

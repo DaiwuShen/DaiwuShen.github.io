@@ -6,14 +6,7 @@ $(document).ready(function(){
 	    // 如果参数中存在uuid
 	    var uuid=url.searchParams.get("uuid");
 	    // 读取文章统计文件
-	    var alticlelist = $.ajax({
-		url:"static/data/json/alticle_count.json",
-		type:"get",
-		async:false,
-		error:function(){
-		    alert("不存在该文章，即将返回。");
-		    window.history.back(-1);}
-	    }).responseJSON;}
+	    }
 	else{
 	    // 不存在uuid参数则返回
 	    alert("参数错误，即将返回。");
@@ -98,6 +91,9 @@ function createContent(content){
 }
 
 function parseHTMLcontent(alticle){
+    var bigtitle = alticle.match(/\<h1.*?\>.+\<\/h1\>/g);
+    console.log(bigtitle)
+    if(bigtitle != null) { document.getElementsByTagName("title")[0].innerText = bigtitle[0].replace(/\<.+?>/g,""); }
     var title_withTag = alticle.match(/\<h[23].*\>.+\<\/h[23]\>/g);
     if(title_withTag != null){
         var content = {}
