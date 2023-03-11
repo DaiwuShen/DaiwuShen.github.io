@@ -148,7 +148,7 @@ for uid in alticlelist.keys():
 site_data["alticles-count"] = len(alticlelist)
 site_data["classifications-count"] = len(classi)
 site_data["tags-count"] = len(tags)
-site_data["last-upate"], = datetime.date.today().strftime(date_format), # strftime返回一个元组
+site_data["last-update"], = datetime.date.today().strftime(date_format), # strftime返回一个元组
 site_data["classification"] = classi
 site_data["tags"] = tags
 site_data["achive"] = achive

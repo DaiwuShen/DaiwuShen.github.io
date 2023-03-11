@@ -47,10 +47,7 @@ $(document).ready(function(){
 		left_area.style.top=String(window.outerHeight-left_area.scrollHeight+20)+"px";}
 	    else{
 		left_area.style.top="80px";}
-            // 图片惰性加载
-            window.onscroll(function(){
-                $("img").each()
-            })
+            
 	    // 点击图片放大查看
 	    $(".paragraph").children("img").each(function(){
 		$(this).click(function(){
