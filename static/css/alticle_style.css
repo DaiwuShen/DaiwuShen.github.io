@@ -1,0 +1,163 @@
+pre {
+	display: flex;
+	border: 1px solid #1d8fed;
+	background-color: #fafafa;
+	word-wrap: normal;
+	word-break: break-all;
+	border-radius: 10px;
+	overflow: auto;
+	font-size: 16px;
+	font-family: Consolas, Monaco, monospace;
+}
+
+#alticle{
+	min-height: 90%;
+}
+
+.alticle-img {
+	flex: 1;
+	/* border: 1px solid black; */
+}
+
+div.alticle-title {
+	display: flex;
+	width: 90%;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.alticle-detail {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: left;
+	width: 90%;
+}
+
+#alticle-box {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#alticle-box>img{
+	width: 100%;
+	height: auto;
+        max-height: 50vh;
+	border-radius: 8px 8px 0 0;
+}
+
+.alticle-img>a>img {
+	height: 100%;
+	width: auto
+}
+
+.alticle-img>a>img:hover {
+	animation: breath 2s ease-in-out infinite;
+}
+
+.data-box {
+	width: 100%;
+	display: flex;
+}
+
+#header {
+	background-attachment: inherit;
+	background-repeat: round;
+	height: 30vh;
+	width: 100% margin-bottom: 16px;
+}
+
+#left-content{
+	position: sticky;
+	flex: 1;
+        z-index: -1;
+}
+
+.line-number {
+	display: flex;
+	flex-direction: column;
+	width: 2em;
+	padding-top: 8px;
+}
+
+.line-number>p {
+	margin: 0;
+}
+
+.paragraph {
+	display: flex;
+	flex-direction: column;
+}
+
+.paragraph>p>a,.paragraph>a{
+	color: darkblue;
+}
+
+.paragraph>p>a:hover,.paragraph>a:hover{
+	color:deepskyblue;
+}
+
+.paragraph>p>a:visited,.paragraph>a:visited{
+	color: blue;
+}
+
+.paragraph>p {
+	font-weight: initial;
+	margin-top: 8px;
+	text-indent: 2em;
+}
+
+.paragraph>img {
+	width: 100%;
+	height: auto;
+	cursor: zoom-in;
+	border: 1px solid #1d8fed;
+	margin: 8px 0 16px 0;
+}
+
+.paragraph>h2,
+.paragraph>h3 {
+	margin: 32px 0 8px 0;
+}
+
+.paragraph>h4 {
+	margin: 4px;
+}
+
+.paragraph>span {
+	background-color: yellow;
+}
+
+blockquote{
+    border-left-style: outset;
+    border-left-width: 15px;
+    border-left-color: deepskyblue;
+    padding: 20px 5px 20px 40px;
+    background: lavender;
+}
+
+.yellow {
+	background-color: yellow;
+}
+
+#view-figure{
+	height: 100%;
+	width: 100%;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(0,0,0,0.8);
+	position: fixed;
+	top: 0px;
+}
+
+#view-figure>img{
+	cursor: zoom-out;
+}
+
+/* 动画 */
+
+/* 引用css */
