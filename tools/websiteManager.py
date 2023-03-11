@@ -5,7 +5,7 @@ import datetime
 import time
 
 
-default_img = "static/data/img/informatrix-1"
+default_img = "https://cdn.staticaly.com/gh/DaiwuShen/daiwuImageBed@main/webP/informatrixspace-informatrix-16.27y0r3eip9mo.webp"
 data_count = "static/data/json/data_count.json"
 alticle_count = "static/data/json/alticle_count.json"
 markdownDir = "static/data/markdown/"

@@ -1,9 +1,9 @@
-var wallpaper = $.ajax({
-    url : "static/data/json/wallpapers.json",
-    type : "get",
-    async: false,
-    error: "https://cdn.staticaly.com/gh/DaiwuShen/daiwuImageBed@main/wallhere/daiwus-anime-girl-1275965-wallhere.46hzxvakciyo.jpg"
-}).responseJSON;
+// var wallpaper = $.ajax({
+//     url : "static/data/json/wallpapers.json",
+//     type : "get",
+//     async: false,
+//     error: "https://cdn.staticaly.com/gh/DaiwuShen/daiwuImageBed@main/wallhere/daiwus-anime-girl-1275965-wallhere.46hzxvakciyo.jpg"
+// }).responseJSON;
 // let Today = new Date();
 // background_image = wallpaper[(Today.getDate() < wallpaper.length)? (Today.getDate() % wallpaper.length) : (wallpaper.length % Today.getDate())]
 // document.getElementById("header").style.backgroundImage = "url(\"" + background_image + "\")";//每日一图
