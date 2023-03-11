@@ -1,0 +1,24 @@
+{
+    "site-setuptime": "2023-03-01",
+    "last-upate": "2023-03-10",
+    "avatar" : "https://cdn.staticaly.com/gh/DaiwuShen/daiwuImageBed@main/daiwus-龙猫.7bls3arxkmf4.gif",
+    "announce": ["这是一个个人博客。当前正在建设中……欢迎指教、交流。", "可接单python、C/C++、静态网页、Djiango，有需要请联系我(^_^)", "站内均为原创内容，未经许可不得转载！"],
+    "alticles-count": 4,
+    "classifications-count": 2,
+    "tags-count": 6,
+    "tags": {
+        "静态网页": 3,
+        "日志": 3,
+        "Javascript": 1,
+        "单片机": 1,
+        "C语言": 1,
+        "80C51": 1},
+    "classification": {
+        "其他": {
+            "日志": 3},
+        "计算机": {
+            "单片机": 1}},
+    "achive": {
+        "2023": [0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        "2021": [0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0]}
+}

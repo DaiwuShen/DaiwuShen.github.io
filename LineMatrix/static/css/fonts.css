@@ -1,0 +1,20 @@
+@font-face{
+    font-family: "HYXinDidiary";
+    src:url("fonts/汉仪新蒂日记体.ttf");
+    font-weight: nomal;
+    font-style: nomal;
+}
+
+@font-face{
+    font-family: "HYLeMiaoTiJ";
+    src:url("fonts/HYLeMiaoTiJ.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face{
+    font-family: "HYLeMiaoTiW";
+    src:url("fonts/HYLeMiaoTiW.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
