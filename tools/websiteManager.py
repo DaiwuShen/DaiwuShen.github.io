@@ -5,7 +5,7 @@ import datetime
 import time
 
 
-default_img = "https://cdn.staticaly.com/gh/DaiwuShen/daiwuImageBed@main/daiwus-logo.6d00ht13f0n4.png"
+default_img = "static/data/img/informatrix-1"
 data_count = "static/data/json/data_count.json"
 alticle_count = "static/data/json/alticle_count.json"
 markdownDir = "static/data/markdown/"
@@ -13,7 +13,7 @@ htmlDir = "static/data/html/"
 MDdata_re = re.compile(">\x20.+:\x20.*")
 HTMLdata_re = re.compile("\"author\:.+\"")
 key_re = re.compile("[^\>]+")
-img_re = re.compile("https?:\/\/.+[^\)]")
+img_re = re.compile("\(.+[^\)]")
 alticlelist = {}
 date_format = "%Y-%m-%d"
 
@@ -30,7 +30,7 @@ def getMetadata(path):
         # 如果是md文件
         if path.split(".")[1] == "md":
             metadata_list = [i.replace(" ", "") for i in MDdata_re.findall(filedata)[:4]]
-            metadata["image"] = img_re.findall(filedata.split("\n")[0])[0] if img_re.findall(filedata.split("\n")[0])!=None else default_img
+            metadata["image"] = img_re.findall(filedata.split("\n")[0])[0].replace("(","").replace(")","") if img_re.findall(filedata.split("\n")[0])!=None else default_img
         # 如果是html文件
         elif path.split(".")[1] == "html":
             metadata_list = HTMLdata_re.findall(filedata.split("\n")[0])[0].replace("\"", "").split("|")

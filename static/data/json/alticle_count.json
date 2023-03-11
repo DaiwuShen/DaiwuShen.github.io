@@ -1,1 +1,28 @@
-{"b4eb9843-5956-4f44-8bfc-2c3b535727e7": {"image": "https://cdn.staticaly.com/gh/DaiwuShen/daiwuImageBed@main/wallhere/daiwus-anime-sky-Clannad-Ushio-Okazaki-Okazaki-Tomoya-geological-phenomenon-218586-wallhere.69puul6gkark.jpg", "author": "DaiwuShen", "date": "2023-03-06", "classification": {"其他": "日志"}, "tag": ["静态网页", "日志", "Javascript"], "path": "static/data/markdown/开发日志2023-03-06.md"}, "9273efb5-2242-489f-9881-00560c864e2a": {"image": "https://cdn.staticaly.com/gh/DaiwuShen/daiwuImageBed@main/wallhere/daiwus-anime-city-urban-street-anime-city-2167357-wallhere.1iczl8i9ekf4.jpg", "author": "DaiwuShen", "date": "2023-03-02", "classification": {"其他": "日志"}, "tag": ["静态网页", "日志"], "path": "static/data/markdown/开发日志2023-03-02.md"}, "5472e6bc-d42b-49e2-b180-2b48f6fc4e5f": {"image": "https://cdn.staticaly.com/gh/DaiwuShen/daiwuImageBed@main/wallhere/daiwus-anime-girl-sky-1275967-wallhere.409axc0nahz4.jpg", "author": "DaiwuShen", "date": "2023-03-01", "classification": {"其他": "日志"}, "tag": ["静态网页", "日志"], "path": "static/data/markdown/开发日志2023-03-01.md"}, "30d93957-4032-4996-b979-4d60f15d1813": {"author": "DaiwuShen", "date": "2021-04-14", "classification": {"计算机": "单片机"}, "tag": ["单片机", "C语言", "80C51"], "image": "https://cdn.staticaly.com/gh/DaiwuShen/daiwuImageBed@main/daiwus-logo.6d00ht13f0n4.png", "path": "static/data/html/【51单片机】矩阵键盘逐行扫描法仿真实验+超详细Proteus仿真和Keil操作步骤.html"}}
+{"b4eb9843-5956-4f44-8bfc-2c3b535727e7": {
+    "image": "static/data/img/informatrix-3",
+    "author": "DaiwuShen",
+    "date": "2023-03-06",
+    "classification": {"其他": "日志"},
+    "tag": ["静态网页", "日志", "Javascript"],
+    "path": "static/data/markdown/开发日志2023-03-06.md"},
+ "9273efb5-2242-489f-9881-00560c864e2a": {
+     "image": "static/data/img/informatrix-2",
+     "author": "DaiwuShen",
+     "date": "2023-03-02",
+     "classification": {"其他": "日志"},
+     "tag": ["静态网页", "日志"],
+     "path": "static/data/markdown/开发日志2023-03-02.md"},
+ "5472e6bc-d42b-49e2-b180-2b48f6fc4e5f": {
+     "image": "static/data/img/informatrix-1",
+     "author": "DaiwuShen",
+     "date": "2023-03-01",
+     "classification": {"其他": "日志"},
+     "tag": ["静态网页", "日志"],
+     "path": "static/data/markdown/开发日志2023-03-01.md"},
+ "30d93957-4032-4996-b979-4d60f15d1813": {
+     "author": "DaiwuShen",
+     "date": "2021-04-14",
+     "classification": {"计算机": "单片机"},
+     "tag": ["单片机", "C语言", "80C51"],
+     "image": "static/data/img/informatrix-1",
+     "path": "static/data/html/【51单片机】矩阵键盘逐行扫描法仿真实验+超详细Proteus仿真和Keil操作步骤.html"}}

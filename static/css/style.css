@@ -2,7 +2,7 @@
 	> Filename        :	style.css
 	> Description     :	template0001的style文件
 	> Creat time      :	2023-02-28 14:27
-	> Last modified   :	2023-03-11 15:39
+	> Last modified   :	2023-03-11 18:55
 	> Author          :	Daiwu Shen
 	> Email           :	shendaiwu@163.com
 **************************************************/
@@ -220,13 +220,13 @@ ul>li{
 #foot-bar{
     width: 100%;
     min-height: 3em;
-	background-color: #1d8fed;
-	padding: 2rem 0 2rem 0;
-        background-position: bottom;
+    background-image: url("static/data/img/informatrix-12.jpg");
+    padding: 2rem 0 2rem 0;
+    background-position: bottom;
 }
 
 #header{
-	background-image: url("https://cdn.staticaly.com/gh/DaiwuShen/daiwuImageBed@main/wallhere/daiwus-anime-nature-2192555-wallhere.skh12k394eo.jpg");
+	background-image: url("static/data/img/informatrix-12.jpg");
 	background-attachment: fixed;
 	background-repeat: repeat;
 	height: 100vh;
