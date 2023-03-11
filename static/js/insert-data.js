@@ -4,10 +4,10 @@ var wallpaper = $.ajax({
     async: false,
     error: "https://cdn.staticaly.com/gh/DaiwuShen/daiwuImageBed@main/wallhere/daiwus-anime-girl-1275965-wallhere.46hzxvakciyo.jpg"
 }).responseJSON;
-let Today = new Date();
-background_image = wallpaper[(Today.getDate() < wallpaper.length)? (Today.getDate() % wallpaper.length) : (wallpaper.length % Today.getDate())]
-document.getElementById("header").style.backgroundImage = "url(\"" + background_image + "\")";//每日一图
-document.getElementById("foot-bar").style.backgroundImage = "url(\"" + background_image + "\")"
+// let Today = new Date();
+// background_image = wallpaper[(Today.getDate() < wallpaper.length)? (Today.getDate() % wallpaper.length) : (wallpaper.length % Today.getDate())]
+// document.getElementById("header").style.backgroundImage = "url(\"" + background_image + "\")";//每日一图
+// document.getElementById("foot-bar").style.backgroundImage = "url(\"" + background_image + "\")"
 // console.log("wallpaper: " + (Today.getDate() < wallpaper.length)? Today.getDate() % wallpaper.length : wallpaper.length % Today.getDate())
 
 $(document).ready(function(){
