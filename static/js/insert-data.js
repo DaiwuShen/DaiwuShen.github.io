@@ -32,8 +32,8 @@ function insertCount(){
     $("#avatar")[0].src = jsondata["avatar"];
     // 生成公告
     for(var item in jsondata["announce"]){
-	$("#left-announcement").append("<div class=\"data-cantainer\"><p>"+ jsondata["announce"][item] +"</p></div>");
-    }
+	$("#left-announcement").append("<div class=\"data-cantainer\"><p>"+ jsondata["announce"][item] +"</p></div>");}
+    $("#alticle-count")[0].innerText = jsondata["alticles-count"];
     var tags=jsondata["tags"];
     var classi=jsondata["classification"];
     var achive=jsondata["achive"];
