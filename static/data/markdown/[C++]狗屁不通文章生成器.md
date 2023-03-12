@@ -4,7 +4,7 @@
 
 > author: DaiwuShen
 > date: 2023-03-12
-> class: 计算机 . C++
+> classification: 计算机 . C++
 > tag: C++, 文件流, 变长数组
 
 ## 1 概况
