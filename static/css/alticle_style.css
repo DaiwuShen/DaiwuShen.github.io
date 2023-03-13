@@ -10,7 +10,7 @@ pre {
 	font-family: Consolas, Monaco, monospace;
 }
 
-#alticle{
+#alticle {
 	min-height: 90%;
 }
 
@@ -42,10 +42,10 @@ div.alticle-title {
 	justify-content: center;
 }
 
-#alticle-box>img{
+#alticle-box>img {
 	width: 100%;
 	height: auto;
-        max-height: 50vh;
+	max-height: 50vh;
 	border-radius: 8px 8px 0 0;
 }
 
@@ -67,13 +67,12 @@ div.alticle-title {
 	background-attachment: fixed;
 	background-repeat: space;
 	height: 30vh;
-	width: 100% ;
+	width: 100%;
 }
 
-#left-content{
+#left-content {
 	position: sticky;
 	flex: 1;
-        z-index: -1;
 }
 
 .line-number {
@@ -92,15 +91,18 @@ div.alticle-title {
 	flex-direction: column;
 }
 
-.paragraph>p>a,.paragraph>a{
+.paragraph>p>a,
+.paragraph>a {
 	color: darkblue;
 }
 
-.paragraph>p>a:hover,.paragraph>a:hover{
-	color:deepskyblue;
+.paragraph>p>a:hover,
+.paragraph>a:hover {
+	color: deepskyblue;
 }
 
-.paragraph>p>a:visited,.paragraph>a:visited{
+.paragraph>p>a:visited,
+.paragraph>a:visited {
 	color: blue;
 }
 
@@ -131,30 +133,30 @@ div.alticle-title {
 	background-color: yellow;
 }
 
-blockquote{
-    border-left-style: outset;
-    border-left-width: 15px;
-    border-left-color: deepskyblue;
-    padding: 20px 5px 20px 40px;
-    background: lavender;
+blockquote {
+	border-left-style: outset;
+	border-left-width: 15px;
+	border-left-color: deepskyblue;
+	padding: 20px 5px 20px 40px;
+	background: lavender;
 }
 
 .yellow {
 	background-color: yellow;
 }
 
-#view-figure{
+#view-figure {
 	height: 100%;
 	width: 100%;
 	display: none;
 	align-items: center;
 	justify-content: center;
-	background-color: rgba(0,0,0,0.8);
+	background-color: rgba(0, 0, 0, 0.8);
 	position: fixed;
 	top: 0px;
 }
 
-#view-figure>img{
+#view-figure>img {
 	cursor: zoom-out;
 }
 

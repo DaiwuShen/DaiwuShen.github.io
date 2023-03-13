@@ -78,11 +78,11 @@ function createContent(content){
 			j++;}}
 		else{
 		    for(var subitem in content[item]){//二级标题，有三级标题
-			li.children("ul").append("<li id=\"_li_\"" + i + "-" + j + "><a class=\"meta-data\" href=\"#_title" + i +  "-" + j + "\">" + subitem + "</a></li>");
+			li.children("ul").append("<li id=\"_li_\"" + i + "-" + j + "><a class=\"meta-data\" href=\"#_title" + i +  "-" + j + "\"><span>" + subitem + "</span></a></li>");
 			if(!isEmpty(content[item][subitem])){
 			    $("#_li_"+i+"-"+j).append("<ul></ul>");
 			    for(var k=0; k<content[item][subitem].length; k++){//三级标题
-				$("#_li_"+i+"-"+j).children("ul").append("<li><a class=\"meta-data\" href=\"#_title" + i +  "-" + j + "-" + k + "\">" + content[item][subitem][k] + "</a></li>");
+				$("#_li_"+i+"-"+j).children("ul").append("<li><a class=\"meta-data\" href=\"#_title" + i +  "-" + j + "-" + k + "\"><span>" + content[item][subitem][k] + "</span></a></li>");
 			    }}
 			j++;
 		    }}}

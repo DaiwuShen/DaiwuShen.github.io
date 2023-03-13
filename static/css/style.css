@@ -2,7 +2,7 @@
 	> Filename        :	style.css
 	> Description     :	template0001的style文件
 	> Creat time      :	2023-02-28 14:27
-	> Last modified   :	2023-03-11 19:03
+	> Last modified   :	2023-03-13 09:54
 	> Author          :	Daiwu Shen
 	> Email           :	shendaiwu@163.com
 **************************************************/
@@ -12,116 +12,121 @@
 /* 	border-collapse: collapse; */
 /* } */
 
-html{
+html {
 	/* font-family: MiSans,serif; */
 	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Lato, Roboto, 'PingFang SC', 'Microsoft YaHei', sans-serif;
 }
 
-a{
+a {
 	text-decoration: none;
 }
 
-a.meta-data{
+.meta-data {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
 	color: black;
 }
 
-a.meta-data:hover,a.tag:hover,div.meta-data:hover{
+.meta-data:hover,
+a.tag:hover {
 	background-color: #1d8fed;
 	color: white;
 }
 
-body{
+body {
 	height: 100%;
 	margin: 0;
 }
 
-ul>li{
+ul>li {
 	width: 100%;
 }
 
-.main-menu-item>svg{
+.main-menu-item>svg {
 	width: 20px;
 	height: 20px;
 }
 
-.alticle-info{
+.alticle-info {
 	height: fit-content;
 	display: table;
-        border-radius: 8px 0 0 8px;
-        table-layout: fixed;
-        width: 100%;
-        height: 15rem;
+	border-radius: 8px 0 0 8px;
+	table-layout: fixed;
+	width: 100%;
+	height: 15rem;
 }
 
-.alticle-img{
+.alticle-img {
 	height: 100%;
 	width: 100%;
-        overflow: hidden;
-        background-size: cover;
-        background-position: center;
-        border-radius: 8px 0 0 8px;
+	overflow: hidden;
+	background-size: cover;
+	background-position: center;
+	border-radius: 8px 0 0 8px;
 }
 
-#alticlelist>.data-block{
-    padding: 0;
-    border-spacing: 0;
+#alticlelist>.data-block {
+	padding: 0;
+	border-spacing: 0;
 }
 
-.alticle-title{
+.alticle-title {
 	color: black;
 	font-size: 16px;
 }
 
-.data-cantainer>.alticle-date{
+.data-cantainer>.alticle-date {
 	font-size: 12px;
 }
 
-.alticle-baseinfo{
+.alticle-baseinfo {
 	flex: 1;
 	display: table-cell;
 	flex-direction: column;
 	/* align-items: center; */
 	justify-content: center;
 	padding: 0px 8px 0px 8px;
-        vertical-align: middle;
+	vertical-align: middle;
 }
 
-.alticle-info>a{
-    display: table-cell;
+.alticle-info>a {
+	display: table-cell;
 	height: 100%;
-	width:40%;
+	width: 40%;
 }
 
-.alticle-img>a>img:hover{
+.alticle-img>a>img:hover {
 	animation: breath 2s ease-in-out infinite;
 }
 
-.alticle-abstract{
+.alticle-abstract {
 	font-size: 12px;
 }
 
-#avatar{
+#avatar {
 	height: 200px;
 	width: 200px;
 }
 
-#left-myself, #avatar-box{
+#left-myself,
+#avatar-box {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-        margin-top: 16px;
-        width: 100%;
-        height: fit-content;
+	margin-top: 16px;
+	width: 100%;
+	height: fit-content;
 }
 
-.data-box{
+.data-box {
 	height: 100%;
 	width: 100%;
 	display: flex;
 }
 
-.data-cantainer{
+.data-cantainer {
 	flex: 1;
 	display: flex;
 	flex-direction: column;
@@ -130,61 +135,63 @@ ul>li{
 	padding: 0px 16px 0px 16px;
 }
 
-.data-cantainer>p{
+.data-cantainer>p {
 	margin: 0;
 	font-size: 16px;
 }
 
-.data-cantainer>a, .alticle-baseinfo>a{
+.data-cantainer>a,
+.alticle-baseinfo>a {
 	color: black;
 }
 
-.alticle-baseinfo>a:hover, .alticle-title:hover{
-    color: gray;
+.alticle-baseinfo>a:hover,
+.alticle-title:hover {
+	color: gray;
 }
 
-.data-cantainer>.subitem{
+.data-cantainer>.subitem {
 	margin-left: 2em;
 	display: flex;
 	justify-content: space-between;
 	/* width: ; */
 }
 
-#base-data-box>.data-cantainer{
+#base-data-box>.data-cantainer {
 	border-radius: 3px;
 	border: 1px solid gray;
 	margin: 0px 12px 0px 12px;
 }
 
-.block-title{
+.block-title {
 	padding: 8px 16px 8px 16px;
 	display: flex;
 	align-items: center;
 }
 
-#contact{
-    margin: 16px 0px 16px 0px;
-    width: 80%;
+#contact {
+	margin: 16px 0px 16px 0px;
+	width: 80%;
 }
 
-#content{
+#content {
 	display: table;
 	width: 1200px;
-        table-layout: fixed;
-        padding: 8px;
-        border-spacing: 16px 16px;
+	table-layout: fixed;
+	padding: 8px;
+	border-spacing: 16px 16px;
 }
 
-#content-bar{
+#content-bar {
 	display: block;
 	height: 100%;
 }
 
-#content-flex{
+#content-flex {
 	width: 80%;
 }
 
-#content-layout{
+#content-layout {
 	display: flex;
 	min-width: 1000px;
 	height: fit-content;
@@ -194,7 +201,7 @@ ul>li{
 	margin-bottom: 32px;
 }
 
-.content-item{
+.content-item {
 	background-color: #5F5F5F;
 	height: 200px;
 	width: 300px;
@@ -204,8 +211,8 @@ ul>li{
 	align-items: center;
 }
 
-.data-block{
-    background-color: white;
+.data-block {
+	background-color: white;
 	width: 100%;
 	box-shadow: 1px 1px 5px 1px;
 	border-radius: 8px;
@@ -213,29 +220,30 @@ ul>li{
 	margin: 16px 0px 16px 0px;
 }
 
-.data-block>ul,.data-block>ul>li>ul{
+.data-block>ul,
+.data-block>ul>li>ul {
 	list-style: none;
 }
 
-#foot-bar{
-    width: 100%;
-    min-height: 3em;
-    background-image: url("https://cdn.staticaly.com/gh/DaiwuShen/daiwuImageBed@main/webP/informatrixspace-informatrix-16.27y0r3eip9mo.webp");
-    padding: 2rem 0 2rem 0;
-    background-position: bottom;
+#foot-bar {
+	width: 100%;
+	min-height: 3em;
+	background-image: url("https://cdn.staticaly.com/gh/DaiwuShen/daiwuImageBed@main/webP/informatrixspace-informatrix-16.27y0r3eip9mo.webp");
+	padding: 2rem 0 2rem 0;
+	background-position: bottom;
 }
 
-#header{
+#header {
 	background-image: url("https://cdn.staticaly.com/gh/DaiwuShen/daiwuImageBed@main/webP/informatrixspace-informatrix-16.27y0r3eip9mo.webp");
 	background-attachment: fixed;
 	background-repeat: repeat;
 	height: 100vh;
 	width: 100%;
 	margin-bottom: 16px;
-        background-position: center;
+	background-position: center;
 }
 
-#initial-bar{
+#initial-bar {
 	display: flex;
 	height: 100%;
 	color: white;
@@ -251,12 +259,12 @@ ul>li{
 	display: table-cell;
 }
 
-#left-announcement{
-    padding-bottom: 16px;
-    font-weight: bolder;
+#left-announcement {
+	padding-bottom: 16px;
+	font-weight: bolder;
 }
 
-.data-block>.data-cantainer{
+.data-block>.data-cantainer {
 	padding: 4px;
 	margin: 8px 16px 8px 16px;
 	border: 1px solid #1d8fed;
@@ -265,30 +273,30 @@ ul>li{
 	align-items: baseline;
 }
 
-#left-tags>.data-cantainer{
-    display: block;
-    flex-direction: row;
+#left-tags>.data-cantainer {
+	display: block;
+	flex-direction: row;
 }
 
-#left-tags>.data-cantainer>a{
+#left-tags>.data-cantainer>a {
 	border-radius: 3px;
 	border: 1px solid gray;
 	margin: 8px;
 	padding: 0px 4px 0px 4px;
 }
 
-#logo{
+#logo {
 	height: 70%;
 }
 
-#logo-bar{
+#logo-bar {
 	height: 100%;
 	display: flex;
 	align-items: center;
 	padding-left: 32px;
 }
 
-.main-menu-item{
+.main-menu-item {
 	color: white;
 	display: flex;
 	align-items: center;
@@ -296,29 +304,25 @@ ul>li{
 	min-width: 70px;
 }
 
-.main-menu-item>a{
+.main-menu-item>a {
 	color: white;
 }
 
-.main-menu-item>a:hover, .alticle-baseinfo>a:hover{
+.main-menu-item>a:hover,
+.alticle-baseinfo>a:hover {
 	opacity: 60%;
 }
 
-.meta-data{
-	display: flex;
-	justify-content: space-between;
-	width: 100%;
-}
 
-.meta-data>p{
+.meta-data>p {
 	margin: 4px 16px 4px 16px;
 }
 
-#menu-btn{
-    display: none;
+#menu-btn {
+	display: none;
 }
 
-#next-page{
+#next-page {
 	top: 75%;
 	width: 100%;
 	position: sticky;
@@ -326,22 +330,29 @@ ul>li{
 	display: flex;
 	align-items: center;
 	justify-content: center;
-        animation: jumpArrow/* 动画名称 */ 1s/* 动画时长1秒 */ infinite /*播放次数：无限*/ ease-out;
+	animation: jumpArrow
+		/* 动画名称 */
+		1s
+		/* 动画时长1秒 */
+		infinite
+		/*播放次数：无限*/
+		ease-out;
 }
 
-.tag{
-    display: inline-block;
+.tag {
+	display: inline-block;
 }
 
-#top-bar{
+#top-bar {
 	height: 60px;
 	display: flex;
-	background-color: rgba(160,160,160,0.5);
+	background-color: rgba(160, 160, 160, 0.5);
 	position: fixed;
 	top: 0;
 	width: 100%;
-	box-shadow: 0px  3px 10px 3px;
-        justify-content: space-between;
+	box-shadow: 0px 3px 10px 3px;
+	justify-content: space-between;
+	z-index: 1;
 }
 
 
@@ -351,26 +362,55 @@ ul>li{
 	vertical-align: top;
 }
 
-#right-area>.data-block{
+#right-area>.data-block {
 	padding: 0 0 16px 0;
 }
 
 /* 动画 */
 @keyframes breath {
-    from { opacity: 1; }                          /* 动画开始时的不透明度 */
-    50%  { opacity: 0.5; }                          /* 动画50% 时的不透明度 */
-    to   { opacity: 1; }                          /* 动画结束时的不透明度 */    
+	from {
+		opacity: 1;
+	}
+
+	/* 动画开始时的不透明度 */
+	50% {
+		opacity: 0.5;
+	}
+
+	/* 动画50% 时的不透明度 */
+	to {
+		opacity: 1;
+	}
+
+	/* 动画结束时的不透明度 */
 }
 
-@keyframes jumpArrow{
-    from {transform: translate(0px, 0px)}
-	50% {transform: translate(0px,30px)}
-	to {transform: translate(0px,0px)}
+@keyframes jumpArrow {
+	from {
+		transform: translate(0px, 0px)
+	}
+
+	50% {
+		transform: translate(0px, 30px)
+	}
+
+	to {
+		transform: translate(0px, 0px)
+	}
 }
 
-@keyframes scaleDraw{
-	0%{transform: scale(1)}
-	%50{transform: scale(1.5)}
-	100%{transform: scale(1)}
+@keyframes scaleDraw {
+	0% {
+		transform: scale(1)
+	}
+
+	50% {
+		transform: scale(1.5)
+	}
+
+	100% {
+		transform: scale(1)
+	}
 }
+
 /* 引用css */
