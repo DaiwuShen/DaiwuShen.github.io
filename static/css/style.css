@@ -221,7 +221,8 @@ ul>li {
 }
 
 .data-block>ul,
-.data-block>ul>li>ul {
+.data-block>ul>li>ul,
+.data-block>ul>li>ul>li>ul {
 	list-style: none;
 }
 
@@ -337,6 +338,28 @@ ul>li {
 		infinite
 		/*播放次数：无限*/
 		ease-out;
+}
+
+table {
+	border: #808080 1px solid;
+}
+
+table tbody tr:nth-child(2n) {
+	background-color: silver;
+}
+
+table tbody tr:nth-child(2n+1) {
+	background-color: aliceblue;
+}
+
+thead {
+	background-color: #008C8C;
+	text-align: center;
+	color: white;
+}
+
+td {
+	text-align: center;
 }
 
 .tag {
