@@ -1,0 +1,40 @@
+<!-- metadata
+name: 正则表达式在线测试工具
+author: DaiwuShen
+description: 一个简单的正则表达式测试工具
+version: v1.0.0
+update time: 2023-03-14
+script: static/js/regextool.js
+-->
+
+<img
+    src="https://cdn.staticaly.com/gh/DaiwuShen/daiwuImageBed@main/webP/informatrixspace-informatrix-9.2zsaanums8cg.webp">
+<div class="alticle-detail">
+    <div class="alticle-title">
+        <h1>正则表达式测试工具</h1>
+        <p>v1.0.0</p>
+        <p>一个简单的正则表达式测试工具</p>
+    </div>
+    <div class="paragraph">
+        <div class="input-box">
+            <textarea type="text" name="string" id="test-string" class="input-edit" placeholder="输入测试文本"></textarea>
+        </div>
+        <div class="command-box">
+            <div class="input-group input-group-blbb">
+                <div class="first-b">/</div>
+                <input type="text" name="command" id="test-command" class="input-edit" placeholder="输入测试正则表达式">
+                <div class="inside-b">/</div>
+                <select id="command-method" class="last-b">
+                    <option value="g">g</option>
+                    <option value="i">i</option>
+                    <option value="m">m</option>
+                </select>
+            </div>
+            <input id="submit" type="submit" value="运行"
+                style="width: 5rem;border: 1px solid #ced4da;border-radius: 5px;">
+        </div>
+        <div class="input-box">
+            <textarea type="text" name="output" id="output-string" class="input-edit" placeholder="输出结果"></textarea>
+        </div>
+    </div>
+</div>

@@ -101,11 +101,11 @@ function createContent(content) {
 }
 
 function parseHTMLcontent(alticle) {
-	var title_line = alticle.match(/\<h[123].*\>.+/g);	/* 获取一到三级标题 */
+	var title_line = alticle.match(/\<h[123].*?\>.+(\<\/h[123]\>)?/g);	/* 获取一到三级标题 */
 	var title_dict = {};
 	var title = [" ", " "];
 	for (var i = 0; i < title_line.length; i++) {
-		var content = title_line[i].replace(/\<h[123].*\>/g, "");
+		var content = title_line[i].replace(/\<h[123].*?\>/g, "").replace(/\<\/h[123]\>/g, "");
 		if (title_line[i][2] == "1") {
 			title[0] = content;
 			title_dict[title[0]] = {};
@@ -118,5 +118,6 @@ function parseHTMLcontent(alticle) {
 			title_dict[title[0]][title[1]].push(content);
 		}
 	}
+	console.log(title_dict);
 	return title_dict;
 }

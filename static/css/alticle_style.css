@@ -54,10 +54,6 @@ div.alticle-title {
 	width: auto
 }
 
-.alticle-img>a>img:hover {
-	animation: breath 2s ease-in-out infinite;
-}
-
 .data-box {
 	width: 100%;
 	display: flex;
@@ -94,16 +90,6 @@ div.alticle-title {
 .paragraph>p>a,
 .paragraph>a {
 	color: darkblue;
-}
-
-.paragraph>p>a:hover,
-.paragraph>a:hover {
-	color: deepskyblue;
-}
-
-.paragraph>p>a:visited,
-.paragraph>a:visited {
-	color: blue;
 }
 
 .paragraph>p {
