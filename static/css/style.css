@@ -42,6 +42,7 @@ h1 {
 a.tag:hover {
 	background-color: #1d8fed;
 	color: white;
+	animation: scaleDraw 0.75s 1 ease-in-out;
 }
 
 body {
@@ -69,16 +70,22 @@ ul>li {
 
 .alticle-img {
 	height: 100%;
-	width: 100%;
+	width: 40%;
 	overflow: hidden;
 	background-size: cover;
 	background-position: center;
 	border-radius: 8px 0 0 8px;
+	display: table-cell;
 }
 
 #alticlelist>.data-block {
 	padding: 0;
 	border-spacing: 0;
+}
+
+#alticlelist>.data-block:hover,
+#alticle-box>img:hover {
+	animation: scaleDraw 0.75s 1 ease-in-out;
 }
 
 .alticle-title {
@@ -158,10 +165,21 @@ ul>li {
 	padding: 8px 16px 8px 16px;
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 }
 
-.block-title>span {
+.block-title-name {
+	display: flex;
+	align-items: center;
+}
+
+.block-title>div>span {
 	margin-left: 16px;
+}
+
+.block-title>a {
+	color: #808080;
+	font-size: 12px;
 }
 
 #contact {
@@ -269,16 +287,35 @@ ul>li {
 	align-items: baseline;
 }
 
+#classification {
+	display: block;
+}
+
+#classification>ul,
+#classification>ul>li>ul {
+	list-style: none;
+	margin-top: 0px;
+}
+
+#classification>ul {
+	padding-left: 4px;
+}
+
 #left-tags>.data-cantainer {
 	display: block;
 	flex-direction: row;
 }
 
-#left-tags>.data-cantainer>a {
+#tags>a {
 	border-radius: 3px;
 	border: 1px solid gray;
 	margin: 8px;
 	padding: 0px 4px 0px 4px;
+}
+
+#tags {
+	border-radius: 8px;
+	border: #1d8fed 1px solid;
 }
 
 #logo {
@@ -417,11 +454,11 @@ td {
 	}
 
 	50% {
-		transform: scale(1.5)
+		transform: scale(1.1)
 	}
 
 	100% {
-		transform: scale(1)
+		transform: scale(1);
 	}
 }
 

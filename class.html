@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <!--
-      > Filename        :	tool.html
-  > Description     :	个人写的小工具。
+      > Filename        :	tags.html
+  > Description     :	标签页
   > Creat time      :	2023-02-28 12:04
   > Last modified   :	2023-03-11 20:05
   > Author          :	Daiwu Shen
@@ -15,13 +15,14 @@
     <meta name="viewport" content="width=device-width,user-scalable=yes ,initial-scale=1.2">
     <meta http-equiv="Access-Control-Allow-Origin" content="*">
     <link rel="stylesheet" href="static/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="static/css/classpagestyle.css">
     <link rel="stylesheet" href="static/css/alticle_style.css" type="text/css" />
     <link rel="stylesheet" href="static/css/smallScreenstyle.css" type="text/css"
         media="screen and (max-width : 1200px)" />
     <link rel="stylesheet" href="static/css/toolstyle.css" type="text/css">
     <link rel="stylesheet" href="http://apps.bdimg.com/libs/highlight.js/9.1.0/styles/github.min.css">
     <link rel="icon" href="static/img/logo.ico" type="icon" />
-    <title>自制工具&ensp;|&ensp;陆柒的个人博客</title>
+    <title>分类&ensp;|&ensp;陆柒的个人博客</title>
     <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <script type="text/javascript" src="static/js/importfile.js"></script>
@@ -49,6 +50,18 @@
                 </div><!--左侧区域结束-->
                 <!-- 右侧区域 -->
                 <div id="right-area">
+                    <div id="alticle" class="data-block">
+                        <div id="alticle-box">
+                            <img src="https://cdn.staticaly.com/gh/DaiwuShen/daiwuImageBed@main/webP/informatrixspace-informatrix-10.3bq6h2yizmm8.webp"
+                                alt="banner" srcset="" />
+                            <div class="alticle-title">
+                                <h1>分类</h1>
+                            </div>
+                            <div class="paragraph">
+                                <div id="classification"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div><!--右侧区域结束-->
                 <!-- 底栏 -->
             </div>
@@ -60,8 +73,9 @@
     <script
         src="//cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/languages/go.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/marked/2.0.3/marked.js"></script>
     <script type="text/javascript" src="static/js/insert-data.js"></script>
-    <script type="text/javascript" src="static/js/createToolpage.js"></script>
+    <script type="text/javascript" src="static/js/createClasspage.js"></script>
 </body>
 
 </html>

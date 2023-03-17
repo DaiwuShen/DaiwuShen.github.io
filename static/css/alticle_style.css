@@ -14,11 +14,6 @@ pre {
 	min-height: 90%;
 }
 
-.alticle-img {
-	flex: 1;
-	/* border: 1px solid black; */
-}
-
 div.alticle-title {
 	display: flex;
 	width: 90%;
@@ -47,11 +42,6 @@ div.alticle-title {
 	height: auto;
 	max-height: 50vh;
 	border-radius: 8px 8px 0 0;
-}
-
-.alticle-img>a>img {
-	height: 100%;
-	width: auto
 }
 
 .data-box {

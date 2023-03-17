@@ -1,75 +1,70 @@
-$(document).ready(function () {
-    var jsondata = getJSON("static/data/json/data_count.json");
-    // 读取文件
-    var alticlelist = getJSON("static/data/json/alticle_count.json");
-    var site_setuptime = jsondata["site-setuptime"];
-    insertCount(jsondata);
-    insertRecentlist(alticlelist);
-    insertAlticlelist(alticlelist, 0, 5)
-    setInterval(function () {
-        $("#site-runtime").text(delta_time(Date.parse(site_setuptime), Date()));
-    }, 1000)
-})
+function insertData() {
+    // 插入公告
+    insertAnnounce(window.datacount["announce"]);
+    insertTags(window.datacount["tags"]);
+    insertBasecount(window.datacount);
+    insertClasslist(window.datacount["classification"]);
+    insertAchivelist(window.datacount["achive"]);
+    insertTools(window.datacount["tools"]);
+    insertRecentlist(window.datacount["alticles"]);
+    insertInformation(window.datacount);
+}
 
-// 获取统计数据
-function insertCount(jsondata) {
-    // 插入头像
-    $("#avatar")[0].src = jsondata["avatar"];
+// 插入公告
+function insertAnnounce(announce) {
     // 生成公告
-    for (var item in jsondata["announce"]) {
-        $("#left-announcement").append("<div class=\"data-cantainer\"><div class=\"meta-data\"><p>" + jsondata["announce"][item] + "</p></div></div>");
+    var announce_box = $("#left-announcement");
+    if (announce_box.length) {
+        for (var item of announce) {
+            announce_box.append("<div class=\"data-cantainer\"><div class=\"meta-data\"><p>" + item + "</p></div></div>");
+        }
     }
-    $("#alticle-count").text(jsondata["alticles-count"]);
-    createTags(jsondata["tags"]);
-    createBasecount(jsondata);
-    createClasslist(jsondata["classification"]);
-    createAchivelist(jsondata["achive"]);
-    insertTools(jsondata["tools"]);
-    return jsondata["site-setuptime"];
 }
 
 // 生成作者信息栏
-function createBasecount(jsondata) {
+function insertBasecount(jsondata) {
+    $("#avatar")[0].src = jsondata["avatar"];
     $("#base-data-box").children("div").children("p")[0].innerText = jsondata["alticles-count"];
     $("#base-data-box").children("div").children("p")[1].innerText = jsondata["classifications-count"];
     $("#base-data-box").children("div").children("p")[2].innerText = jsondata["tags-count"];
-    $("#alticle-count").text(jsondata["alticle-count"]);
-    $("#recently-update").text(jsondata["last-update"]);
 }
 
 // 生成标签列表
-function createTags(tags) {
+function insertTags(tags) {
     var tags_div = $("#tags");
     if (tags_div.length) {
         for (var item in tags) {
-            tags_div.append("<a class=\"tag\">" + item + "</a>");
+            tags_div.append("<a class=\"tag\" href=\"tags.html?tag=" + escapeURL(item) + "\">" + item + "</a>");
         }
     }
 }
 
 // 生成类别列表
-function createClasslist(classi) {
+function insertClasslist(classi) {
     var classi_div = $("#classification");
     if (classi_div.length) {
-        var i = 0;
-        var total = 0;
+        var html = "";
         // 生成类别列表
         for (var key in classi) {
+            var line = "";
             var count = 0;
-            classi_div.append("<li id=\"class_" + String(i) + "\"><a href=\"\" class=\"meta-data\"><span>" + String(key) + "</span><span id=\"class_" + String(i) + "_num\"></span></a><ul></ul></li>");
-            for (var key1 in classi[key]) {
-                classi_div.children("#class_" + String(i)).children("ul").append("<li><a href=\"\" class=\"meta-data\"><span>" + String(key1) + "</span><span>" + String(classi[key][key1]) + "</span></a></li>");
-                count = count + classi[key][key1];
+            if ((classi[key].length != 0 || classi[key] != null) && typeof (classi[key]) == "object") {
+                line += "<ul>";
+                for (var key1 in classi[key]) {
+                    line += "<li class=\"class\"><a href=\"class.html?class=" + escapeURL(key1) + "\" class=\"meta-data\"><span>" + key1 + "</span><span>" + classi[key][key1] + "</span></a></li>";
+                    count += classi[key][key1];
+                }
+                line += "</ul>";
             }
-            $("#class_" + String(i) + "_num").text(count);
-            i += 1;
-            total += count;
+            html += "<li class=\"class\"><a href=\"class.html?class=" + escapeURL(key) + "\" class=\"meta-data\"><span>" + key + "</span><span>" + count + "</span></a>" + line + "</li>";
         }
+        html = "<ul>" + html + "</ul>";
+        classi_div.append(html);
     }
 }
 
 // 生成归档列表
-function createAchivelist(achive) {
+function insertAchivelist(achive) {
     var achive_div = $("#achive");
     if (achive_div.length) {
         var i = 0;
@@ -96,32 +91,11 @@ function insertRecentlist(alticlelist) {
         var i = 0;
         var recent_html = "";
         for (var uuid in alticlelist) {
-            recent_html += "<div class=\"data-cantainer\"><a class=\"meta-data\" href=\"alticle-detail.html?uuid=" + uuid + "\"><span class=\"alticle-title\">" + alticlelist[uuid]["path"].split("/").pop().split(".")[0] + "</span><p class=\"alticle-date\">" + alticlelist[uuid]["date"] + "</p></a></div>";
+            recent_html += "<div class=\"data-cantainer\"><a class=\"meta-data\" href=\"alticle-detail.html?uuid=" + uuid + "\"><span class=\"alticle-title\">" + alticlelist[uuid]["name"] + "</span><p class=\"alticle-date\">" + alticlelist[uuid]["date"] + "</p></a></div>";
             i++;
             if (i >= 5) { break; }
         }
         recentbox.append(recent_html);
-    }
-}
-
-// 生成文章列表
-function insertAlticlelist(alticlelist, start, step) {
-    // 生成首页文章列表
-    var listbox = $("#alticlelist");
-    if (listbox.length) {
-        var uuids = Object.keys(alticlelist);
-        var htmlblock = "";
-        for (var uuid of uuids.slice(start, step)) {
-            var main_classi = Object.keys(alticlelist[uuid]["classification"])[0];
-            var sub_classi = alticlelist[uuid]["classification"][main_classi];
-            htmlblock += "<div class=\"data-block\">" +
-                "<div class=\"alticle-info\">" +
-                "<a href=\"alticle-detail.html?uuid=" + uuid + "\"><div class=\"alticle-img\" style=\"background-image:url(" + alticlelist[uuid]["image"] + ");\"></div></a>" +
-                "<div class=\"alticle-baseinfo\">" +
-                "<a href=\"alticle-detail.html?uuid=" + uuid + "\"><h1>" + alticlelist[uuid]["path"].split("/").pop().split(".")[0] + "</h1></a>" +
-                "<div class=\"alticle-meta\"><span>发表于</span><span>" + alticlelist[uuid]["date"] + "</span><span>" + main_classi + "</span><span>-&gt;</span><span>" + sub_classi + "</span></div></div></div></div>";
-        }
-        listbox[0].innerHTML = htmlblock;
     }
 }
 
@@ -132,11 +106,29 @@ function insertTools(toollist) {
         var i = 0;
         var toolhtml = "";
         for (var name in toollist) {
-            toolhtml += "<div class=\"data-cantainer\"><a class=\"meta-data\" href=\"tool.html?tool=" + name + "\"><span class=\"alticle-title\">" + name + "</span><p class=\"alticle-date\">" + toollist[name]["description"] + "</p></a></div>";
+            toolhtml += "<div class=\"data-cantainer\"><a class=\"meta-data\" href=\"tool.html?tool=" + escapeURL(name) + "\"><span class=\"alticle-title\">" + name + "</span><p class=\"alticle-date\">" + toollist[name]["description"] + "</p></a></div>";
             i++;
             if (i >= 5) { break; }// 限制显示个数为5个
         }
         cantainer.append(toolhtml);
+    }
+}
+
+// 插入网站资讯
+function insertInformation(jsondata) {
+    var alticle_count = $("#alticle-count");
+    var last_update = $("#recently-update");
+    var runtime = $("#site-runtime");
+    if (alticle_count.length) {
+        $("#alticle-count").text(jsondata["alticles-count"]);
+    }
+    if (last_update.length) {
+        last_update.text(jsondata["last-update"]);
+    }
+    if (runtime.length) {
+        setInterval(function () {
+            $("#site-runtime").text(delta_time(Date.parse(jsondata["site-setuptime"]), Date()));
+        }, 1000);
     }
 }
 

@@ -30,7 +30,7 @@ $(document).ready(function () {
 			}
 			$("#alticle-box").append(alticle);	/* 写入文章html内容 */
 			createContent(parseHTMLcontent(alticle));/* 写入目录 */
-			$("title")[0].innerText = alticlelist[uuid]["path"].split("/").pop().split(".")[0];/* 插入标题 */
+			$("title")[0].innerText = alticlelist[uuid]["path"].split("/").pop().split(".")[0] + "&emsp;|&emsp;武陆柒的个人博客";/* 插入标题 */
 			hljs.initHighlightingOnLoad();	/* 代码高亮 */
 			hljs.highlightAll();/* 初始化 */
 			/* 粘性侧边栏滚动 */

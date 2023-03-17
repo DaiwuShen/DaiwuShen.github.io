@@ -30,11 +30,71 @@ script: static/js/regextool.js
                     <option value="m">m</option>
                 </select>
             </div>
-            <input id="submit" type="submit" value="运行"
-                style="width: 5rem;border: 1px solid #ced4da;border-radius: 5px;">
+            <input id="submit" type="submit" value="运行">
         </div>
         <div class="input-box">
             <textarea type="text" name="output" id="output-string" class="input-edit" placeholder="输出结果"></textarea>
         </div>
+    </div>
+    <div id="help" class="paragraph">
+        <table>
+            <caption>常用正则表达式符号对照表</caption>
+            <thead>
+                <tr>
+                    <th>符号</th>
+                    <th>含义</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>^</td>
+                    <td>匹配开头</td>
+                </tr>
+                <tr>
+                    <td>$</td>
+                    <td>匹配结尾</td>
+                </tr>
+                <tr>
+                    <td>&dot;</td>
+                    <td>匹配任意字符（换行符和回车符除外）</td>
+                </tr>
+                <tr>
+                    <td>?</td>
+                    <td>匹配零次或一次，或限制贪婪</td>
+                </tr>
+                <tr>
+                    <td>*</td>
+                    <td>匹配零次或多次</td>
+                </tr>
+                <tr>
+                    <td>+</td>
+                    <td>匹配一次或多次</td>
+                </tr>
+                <tr>
+                    <td>[a-z0-9]</td>
+                    <td>中括号表达式，匹配中括号内的包含的任一字符一次</td>
+                </tr>
+                <tr>
+                    <td>[^a]</td>
+                    <td>中括号表达式，不匹配字符&emsp;a&emsp;</td>
+                </tr>
+                <tr>
+                    <td>\w</td>
+                    <td>匹配字符、数字、下划线一次，与[0-9a-zA-Z_]含义相同</td>
+                </tr>
+                <tr>
+                    <td>\W</td>
+                    <td>匹配除了&emsp;\w&emsp;外的字符</td>
+                </tr>
+                <tr>
+                    <td>()</td>
+                    <td>包裹子表达式</td>
+                </tr>
+                <tr>
+                    <td>{n,m}</td>
+                    <td>匹配次数限定，最小匹配&emsp;n&emsp;次，最大匹配&emsp;m&emsp;次</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>
