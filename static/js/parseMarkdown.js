@@ -309,14 +309,17 @@ function parseMdsplittoblock(alticle) {
 	var block_list = [];
 	var lines = alticle.split("\n");	/* 消除多于的空行 */
 	block = "";
-	for (var i = 0; i < lines.length; i++) {		/* 开始划分区块 */
-		if (lines[i] != "") {
-			block += lines[i] + "\n";
+	for (var line of lines) {		/* 开始划分区块 */
+		if (line != "") {
+			block += line + "\n";
 		}
 		else {
 			block_list.push(block);
 			block = "";
 		}
+	}
+	if (block != "") {
+		block_list.push(block);
 	}
 	return block_list;
 }

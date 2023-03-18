@@ -1,4 +1,4 @@
-![informatrixspace-informatrix-14](https://cdn.jsdelivr.net/gh/DaiwuShen/daiwuImageBed/blog/informatrixspace-informatrix-14.2hh2i2g4k4jk.webp)	
+![banner](https://cdn.staticaly.com/gh/DaiwuShen/daiwuImageBed@main/webP/informatrixspace-informatrix-14.2hh2i2g4k4jk.webp)	
 
 # 「Javascript」解析markdown为html——引用篇.md
 
@@ -34,7 +34,7 @@
 
 markdown 的效果如下：
 
-![informatrixspace-ScreenShot_20230318-001646](https://cdn.jsdelivr.net/gh/DaiwuShen/daiwuImageBed/blog/informatrixspace-ScreenShot_20230318-001646.4y9eoryci7b4.webp)
+![informatrixspace-ScreenShot_20230318-001646](https://cdn.staticaly.com/gh/DaiwuShen/daiwuImageBed@main/20230318/informatrixspace-ScreenShot_20230318-001646.4y9eoryci7b4.webp)
 
 ### 2.2 html中的引用块
 
