@@ -327,10 +327,10 @@ function replaceSpecialsymbol(string) {
 }
 
 function parseMdlink(str) {
-	var links = str.match(/\[.+?\]\(.+\)/g);// 解析出链接
-	if (links = null) {
+	var links = str.match(/\[.+?\]\(.+?\)/g);// 解析出链接
+	if (links != null) {
 		for (var i = 0; i < links.length; i++) {
-			var text_link = links[i].match(/[^!^\[^\(^\]^\)]+/g);
+			var text_link = links[i].match(/[^!\[\(\]\)]+/g);
 			str = str.replace(links[i], "<a href=\"" + text_link[1] + "\">" + text_link[0] + "</a>");
 		}
 	}
