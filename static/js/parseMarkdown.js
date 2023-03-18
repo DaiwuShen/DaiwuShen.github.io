@@ -323,7 +323,7 @@ function parseMdsplittoblock(alticle) {
 
 //替换转义字符函数
 function replaceSpecialsymbol(string) {
-	return string.replace(/\&/g, "&amp").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\"/g, "&quot;").replace(/\x20/g, "&emsp;").replace(/\t/g, "&emsp;&emsp;&emsp;&emsp;");
+	return string.replace(/\&/g, "&amp").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\"/g, "&quot;").replace(/\x20/g, "&ensp;").replace(/\t/g, "&ensp;&ensp;&ensp;&ensp;");
 }
 
 function parseMdlink(str) {
