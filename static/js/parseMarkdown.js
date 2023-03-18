@@ -373,17 +373,20 @@ function parselist(string) {
 function parsequoteblock(string) {
 	var quote_html = "<blockquote>";
 	var lines = string.split("\n");
+	console.log(lines);
 	var i = 0;
 	var subquote = "";
 	while (i < lines.length - 1) {
-		if (lines[i][1] == ">") {
-			while (lines[i][1] != ">") {
-				subquote += lines[i].replace(/^\>/g, "");
+		if (lines[i].match(/^(>\x20?){2}/g) != null) {
+			while (lines[i].match(/^(>\x20?){2}/g) != null) {
+				//if (lines[i].match(/^(>\x20?){2}.+/g) != null)
+				subquote += lines[i].replace(/^\>\x20?/g, "") + "\n";
+				console.log(subquote);
 				i++;
 			}
 			quote_html += parsequoteblock(subquote);
 		}
-		else if (lines[i] != "> ") {
+		else if (lines[i].match(/^(>\x20?){1}.+/g) != null) {
 			quote_html += "<p>" + replaceSpecialstyle(replaceSpecialsymbol(lines[i].slice(2, lines[i].length))) + "</p>";
 			i++;
 		}

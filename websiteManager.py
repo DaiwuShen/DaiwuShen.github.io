@@ -163,9 +163,16 @@ def updateDatacount(alticlelist, tools):
             "achive": {},
             "tools": {}}
     site_data["alticles-count"] = len(alticlelist)
+    alticle_count = {}
+    for uid in alticlelist:
+        alticle_count[uid] = {}
+        alticle_count[uid]["name"] = alticlelist[uid]["path"].split(
+            "/")[-1].split(".")[0]
+        alticle_count[uid]["date"] = alticlelist[uid]["date"]
     classi = updateClass(alticlelist)
     tags = updateTag(alticlelist)
     achive = updateAchive(alticlelist)
+    site_data["alticles"] = alticle_count
     site_data["classifications-count"] = len(classi)
     site_data["tags-count"] = len(tags)
     # strftime返回一个元组

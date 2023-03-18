@@ -2,7 +2,7 @@
 
 # [C++]狗屁不通文章生成器
 
-> author: DaiwuShen
+> author: 陆柒
 > 
 > date: 2023-03-12
 > 
