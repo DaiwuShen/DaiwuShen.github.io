@@ -1,5 +1,6 @@
 $(document).ready(function () {
     createHTML();
+    stickySidebar("#left-content");
     insertData();
     createToolpage();
 });

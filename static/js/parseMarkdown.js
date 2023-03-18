@@ -485,7 +485,9 @@ function parseMdblocks(blocks) {
 			block_html = block;
 		}
 		else {/* 普通文本 */
-			block_html += "<p>" + replaceSpecialstyle(replaceSpecialsymbol(block)) + "</p>";
+			if (block != "") {
+				block_html += "<p>" + replaceSpecialstyle(replaceSpecialsymbol(block)) + "</p>";
+			}
 		}
 		/* 添加进文章中 */
 		alticle_html += block_html;

@@ -6,7 +6,6 @@ $(document).ready(function () {
         insertAlticlelist(alticlelist, 0, 10);
         insertData();
     }
-
 })
 
 function createIndexpage() {

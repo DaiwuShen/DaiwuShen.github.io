@@ -27,7 +27,8 @@ div.alticle-title {
 	display: flex;
 	flex-direction: column;
 	justify-content: left;
-	width: 90%;
+	width: 100%;
+	align-items: center;
 }
 
 #alticle-box {
@@ -75,6 +76,7 @@ div.alticle-title {
 .paragraph {
 	display: flex;
 	flex-direction: column;
+	width: 90%;
 }
 
 .paragraph>p>a,
@@ -89,11 +91,13 @@ div.alticle-title {
 }
 
 .paragraph>img {
-	width: 100%;
+	width: auto;
 	height: auto;
+	max-width: 80%;
 	cursor: zoom-in;
 	border: 1px solid #1d8fed;
 	margin: 8px 0 16px 0;
+	align-self: center;
 }
 
 .paragraph>h2,

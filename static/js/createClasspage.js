@@ -1,5 +1,6 @@
 $(document).ready(function () {
     createClasspage();
+    stickySidebar("#left-content");
     insertData();
     searchClass();
 })

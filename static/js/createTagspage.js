@@ -1,5 +1,6 @@
 $(document).ready(function () {
     createTagspage();
+    stickySidebar("#left-content");
     insertData();
     createTaglist();
 })
