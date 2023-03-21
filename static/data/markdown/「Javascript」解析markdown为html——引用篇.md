@@ -1,6 +1,6 @@
 ![banner](https://cdn.staticaly.com/gh/DaiwuShen/daiwuImageBed@main/webP/informatrixspace-informatrix-14.2hh2i2g4k4jk.webp)	
 
-# 「Javascript」解析markdown为html——引用篇.md
+# 「Javascript」解析markdown为html——引用篇
 
 > author: 陆柒
 >
