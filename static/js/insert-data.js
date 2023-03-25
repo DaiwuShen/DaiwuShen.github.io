@@ -87,11 +87,22 @@ function insertAchivelist(achive) {
 function insertRecentlist(alticlelist) {
     // 生成最近文章列表
     var recentbox = $("#left-recent");
+    var pathname = new URL(window.location.href).pathname;
+    var path;
+    if (pathname.match(/^\/([^\/]+?\.html)?$/g) != null) {
+        path = "alticle-list/"
+    }
+    else if (pathname.match(/^\/alticle-list/g) != null) {
+        path = ""
+    }
+    else {
+        path = "../alticle-list/"
+    }
     if (recentbox.length) {
         var i = 0;
         var recent_html = "";
-        for (var uuid in alticlelist) {
-            recent_html += "<div class=\"data-cantainer\"><a class=\"meta-data\" href=\"alticle-detail.html?uuid=" + uuid + "\"><span class=\"alticle-title\">" + alticlelist[uuid]["name"] + "</span><p class=\"alticle-date\">" + alticlelist[uuid]["date"] + "</p></a></div>";
+        for (var title in alticlelist) {
+            recent_html += "<div class=\"data-cantainer\"><a class=\"meta-data\" href=\"" + escapeURL(path + title + ".html") + "\"><span class=\"alticle-title\">" + title + "</span><p class=\"alticle-date\">" + alticlelist[title] + "</p></a></div>";
             i++;
             if (i >= 5) { break; }
         }
@@ -102,11 +113,22 @@ function insertRecentlist(alticlelist) {
 // 插入自制工具列表
 function insertTools(toollist) {
     var cantainer = $("#left-tools");
+    var pathname = new URL(window.location.href).pathname;
+    var path = "";
+    if (pathname.match(/^\/([^\/]+?\.html)?$/g) != null) {
+        path = "tool/"
+    }
+    else if (pathname.match(/^\/tool/g) != null) {
+        path = ""
+    }
+    else {
+        path = "../tool/"
+    }
     if (cantainer.length) {
         var i = 0;
         var toolhtml = "";
         for (var name in toollist) {
-            toolhtml += "<div class=\"data-cantainer\"><a class=\"meta-data\" href=\"tool.html?tool=" + escapeURL(name) + "\"><span class=\"alticle-title\">" + name + "</span><p class=\"alticle-date\">" + toollist[name]["description"] + "</p></a></div>";
+            toolhtml += "<div class=\"data-cantainer\"><a class=\"meta-data\" href=\"" + path + escapeURL(name + ".html") + "\"><span class=\"alticle-title\">" + name + "</span><p class=\"alticle-date\">" + toollist[name]["description"] + "</p></a></div>";
             i++;
             if (i >= 5) { break; }// 限制显示个数为5个
         }
@@ -142,3 +164,25 @@ function delta_time(start_time, end_time) {
     var sec = (deltatime - (((day * 24 + hour) * 60) + min) * 60 * 1000) / 1000;
     return String(day + "天" + hour + "时" + min + "分" + sec + "秒");
 }
+
+// 好用的功能
+document.addEventListener('copy', function (event) {
+    let clipboardData = event.clipboardData || window.clipboardData;
+    if (!clipboardData) { return; }
+    var selection;
+    var blogName = '陆柒的个人博客';
+    selection = window.getSelection() ? window.getSelection().toString() : document.selection.createRange().text;
+    var pagelink = "「本文来源：" + blogName + "<br/>原文链接：" + document.location.href + "」";
+    if (selection) {
+        event.preventDefault();
+        var text = "";
+        var len = selection.length;
+        for (var i = 0; i < len / 100 - 1; i++) {
+            text += selection.slice(i * 100, i * 100 + 100) + pagelink;
+        }
+        clipboardData.setData('text/plain', text);
+        console.log(text)
+    }
+});
+
+

@@ -68,6 +68,11 @@ ul>li {
 	height: 15rem;
 }
 
+.alticle-meta {
+	color: #606060;
+	text-align: end;
+}
+
 .alticle-img {
 	height: 100%;
 	width: 40%;
@@ -110,6 +115,14 @@ ul>li {
 	display: table-cell;
 	height: 100%;
 	width: 40%;
+}
+
+.description {
+	height: 80px;
+	overflow: hidden;
+	margin: 16px 24px 16px 24px;
+	font-size: 14px;
+	color: #808080;
 }
 
 #avatar {

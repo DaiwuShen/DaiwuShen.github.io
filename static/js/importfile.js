@@ -1,3 +1,15 @@
+var url = new URL(window.location.href)
+var data_dir = ""
+var part_dir = ""
+if (url.pathname.match(/^\/([^/]+?\.html)?$/g) != null) {
+    data_dir = "static/data/json/";
+    part_dir = "static/site-part-element/";
+}
+else if (url.pathname.match(/^\/(alticle-list|tool)/g) != null) {
+    data_dir = "../static/data/json/"
+    part_dir = "../static/site-part-element/"
+}
+
 function getJSON(fileurl) {
     return $.ajax({
         url: fileurl,
@@ -41,10 +53,10 @@ function include(element, part) {
     var box = $(element);
     if (typeof (part) == "object") {
         for (var item of part) {
-            box.append(getText("static/site-part-element/part-" + item + ".html"));
+            box.append(getText(part_dir + "part-" + item + ".html"));
         }
     }
-    else if (typeof (part) == "string") { box.append(getText("static/site-part-element/part-" + part + ".html")); }
+    else if (typeof (part) == "string") { box.append(getText(part_dir + "part-" + part + ".html")); }
     else {
         console.log("出错！");
     }
@@ -80,4 +92,4 @@ function zoomInpicture() {
     })
 }
 
-window.datacount = getJSON("static/data/json/data_count.json");
+window.datacount = getJSON(data_dir + "data_count.json");

@@ -1,6 +1,5 @@
 import os
 import re
-import uuid
 import datetime
 
 
@@ -8,12 +7,14 @@ default_img = "https://cdn.staticaly.com/gh/DaiwuShen/daiwuImageBed@main/webP/in
 data_count = "static/data/json/data_count.json"
 alticle_count = "static/data/json/alticle_count.json"
 tool_count = "static/data/json/tools_count.json"
-markdownDir = "static/data/markdown/"
-htmlDir = "static/data/html/"
-toolDir = "static/tool/"
+htmlDir = "alticle-list/"
+alticle_list = "alticle-list/"
+toolDir = "tool/"
 MDdata_re = re.compile(">\x20.+:\x20.*")
-HTMLdata_re = re.compile("\"author\:.+\"")
-TOOLdata_re = re.compile("<!--(.|\n|\r)*-->")
+HTMLdata_re = re.compile(
+    "<blockquote>.+?</blockquote>")
+TOOLdata_re = re.compile(
+    "<meta[\x20\s\n\r]*name=\"description\"[\x20\s\n\r]*content=\".*?\">")
 key_re = re.compile("[^\>]+")
 img_re = re.compile("\(.+[^\)]")
 alticlelist = {}
@@ -25,33 +26,45 @@ def getMetadata(path):
     metadata = {}
     with open(path, "r", encoding="utf8") as fh:
         filedata = fh.read()
-        # 如果是md文件
-        if path.split(".")[1] == "md":
-            metadata_list = [i.replace(" ", "")
-                             for i in MDdata_re.findall(filedata)[:4]]
-            metadata["image"] = img_re.findall(filedata.split("\n")[0])[0].replace("(", "").replace(
-                ")", "") if img_re.findall(filedata.split("\n")[0]) != None else default_img
-        # 如果是html文件
-        elif path.split(".")[1] == "html":
-            metadata_list = HTMLdata_re.findall(filedata.split("\n")[0])[
-                0].replace("\"", "").split("|")
-        else:
-            print(f"文件{path}既不是markdown也不是html.")
-            return False
-    for line in metadata_list:
-        metadata[key_re.findall(line.split(":")[0])[0]] = line.split(":")[1]
-    metadata["classification"] = {metadata["classification"].split(
-        ".")[0]: metadata["classification"].split(".")[1]}
+    quote_block = HTMLdata_re.findall(filedata, re.M)[0]
+    for key_value in re.findall(r"<p>.+?<\/p>", quote_block):
+        key_value = key_value.replace("<p>", "").replace(
+            "</p>", "").replace("&nbsp;", "").split(":")
+        metadata[key_value[0]] = key_value[1]
+    classi = metadata["classification"].split(".")
+    metadata["classification"] = {classi[0]: classi[1]}
     metadata["tag"] = metadata["tag"].split(",")
-    if metadata["image"] == "":
-        metadata["image"] = default_img
-    metadata["path"] = path
+    metadata["image"] = re.findall(r"src=\".+?\"", re.findall(r"<img\x20.+?>", filedata)[0])[0].replace(
+        "src=\"", "").replace("\"", "") if re.findall(r"<img\x20.+?>", filedata) != [] else default_img
+    metadata["title"] = path.split("/")[-1].split(".")[0]
+    metadata["description"] = re.findall(
+        r"<meta name=\"description\" content=\".*?\">", filedata, re.M)[0].replace("<meta name=\"description\" content=\"", "").replace("\">", "")
     return metadata
+
+
+def createAlticlelistpage(alticlelist):
+    html_list = ""
+    for title in alticlelist.keys():
+        main_classi = list(alticlelist[title]["classification"].keys())[0]
+        sub_classi = alticlelist[title]["classification"][main_classi]
+        html_list += "<div class=\"data-block\"><a href=\"alticle-list/" + title + \
+            ".html\"><div class=\"alticle-info\"><div class=\"alticle-img\" style=\"background-image:url(" + alticlelist[title]["image"] + \
+            ");\"></div><div class=\"alticle-baseinfo\"><h1>" + title + \
+            "</h1><div class=\"description\">"+alticlelist[title]["description"]+"</div><div class=\"alticle-meta\"><span>"+main_classi+"</span><span>"+sub_classi+"</span></div><div class=\"alticle-meta\"><span>发布于</span><span>" + \
+            alticlelist[title]["date"] + "</span></div></div></div></a></div>"
+    html = ""
+    with open("./static/templates/alticle-list.html", "r") as fin:
+        for line in fin.readlines():
+            if "{{alticle-list}}" in line:
+                line = html_list
+            html += line
+    with open("./alticle-list.html", "w") as fout:
+        fout.write(html)
 
 
 def updateAlticlelist(alticlelist, path, metadata):
     """ 更新文章信息列表 """
-    if path not in [alticlelist[i]["path"] for i in alticlelist.keys()]:
+    if path.split("/")[-1].split(".")[0] not in alticlelist.keys():
         # 如果是新的文章，需要通过比较时间来将决定文章插入的位置
         alticlelist_newer = {}  # 存储比新文章更新的文章
         alticlelist_older = {}  # 存储更旧的
@@ -62,11 +75,13 @@ def updateAlticlelist(alticlelist, path, metadata):
             else:
                 # 否则存储到older
                 alticlelist_older[key] = alticlelist[key]
+        title = metadata["title"]
+        del metadata["title"]
         alticlelist = {**alticlelist_newer, **
-                       {str(uuid.uuid4()): metadata}, **alticlelist_older}
+                       {title: metadata}, **alticlelist_older}
     else:
         for alticle in alticlelist.keys():
-            if alticlelist[alticle]["path"] == path:
+            if alticlelist[alticle] == path.split("/")[-1].split(".")[0]:
                 for key in alticlelist[alticle].keys():
                     if alticlelist[alticle][key] != metadata[key]:
                         alticlelist[alticle][key] = metadata[key]
@@ -79,19 +94,22 @@ def updateAlticlecount():
         filedata = fh.read()
         if(filedata != ""):
             alticlelist = eval(filedata)
-    for path in [markdownDir+i for i in os.listdir(markdownDir)] + [htmlDir+i for i in os.listdir(htmlDir)]:
+        else:
+            alticlelist = {}
+    for path in [htmlDir+i for i in os.listdir(htmlDir)]:
         metadata = getMetadata(path)
         alticlelist = updateAlticlelist(alticlelist, path, metadata)
     with open(alticle_count, "w") as ofh:
         ofh.write(str(alticlelist).replace("\'", "\""))
+    createAlticlelistpage(alticlelist)
     return alticlelist
 
 
 def updateTag(alticlelist):
     tags = {}
-    for uid in alticlelist.keys():
+    for title in alticlelist.keys():
         # 记录tag
-        for tag in alticlelist[uid]["tag"]:
+        for tag in alticlelist[title]["tag"]:
             if tag not in tags.keys():
                 tags[tag] = 1
             else:
@@ -111,14 +129,14 @@ def updateTag(alticlelist):
 
 def updateClass(alticlelist):
     classi = {}
-    for uid in alticlelist.keys():
+    for title in alticlelist.keys():
         # 添加class
         # item大类
         classisExist = False
         for item in classi.keys():
             # 如果文章的大类已经存在
-            if item in alticlelist[uid]["classification"].keys():
-                subitem = alticlelist[uid]["classification"][item]
+            if item in alticlelist[title]["classification"].keys():
+                subitem = alticlelist[title]["classification"][item]
                 classisExist = True
                 # print(f"subitem:{subitem}\tclass[item]:{classi[item]}")
                 # 如果文章的次class也已经有记录
@@ -129,16 +147,16 @@ def updateClass(alticlelist):
                     classi[item][subitem] = 1
                 # 如果文章的主class没有记录
         if not classisExist:
-            classkey = list(alticlelist[uid]["classification"].keys())[0]
-            classi[classkey] = {alticlelist[uid]
+            classkey = list(alticlelist[title]["classification"].keys())[0]
+            classi[classkey] = {alticlelist[title]
                                 ["classification"][classkey]: 1}
     return classi
 
 
 def updateAchive(alticlelist):
     achive = {}
-    for uid in alticlelist.keys():
-        year, month, day = alticlelist[uid]["date"].split("-")
+    for title in alticlelist.keys():
+        year, month, day = alticlelist[title]["date"].split("-")
         if year not in achive.keys():
             achive[year] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         achive[year][int(month)-1] += 1
@@ -164,11 +182,8 @@ def updateDatacount(alticlelist, tools):
             "tools": {}}
     site_data["alticles-count"] = len(alticlelist)
     alticle_count = {}
-    for uid in alticlelist:
-        alticle_count[uid] = {}
-        alticle_count[uid]["name"] = alticlelist[uid]["path"].split(
-            "/")[-1].split(".")[0]
-        alticle_count[uid]["date"] = alticlelist[uid]["date"]
+    for title in alticlelist.keys():
+        alticle_count[title] = alticlelist[title]["date"]
     classi = updateClass(alticlelist)
     tags = updateTag(alticlelist)
     achive = updateAchive(alticlelist)
@@ -191,11 +206,13 @@ def getToolmetadata():
     for path in toollist:
         with open(path, "r") as fin:
             filedata = fin.read()
-        metadata_list = TOOLdata_re.match(filedata)[0].split("\n")[1:-1]
+        description = TOOLdata_re.findall(filedata, re.M)[0][:-2]
+        metadata_list = re.sub(
+            r"<meta[\x20\s\n\r]*name=\"description\"[\x20\s\n\r]*content=\"", "", description).split(";")
         metadata = {}
         metadata["image"] = default_img
         for line in metadata_list:
-            key, value = line.replace(" ", "").split(":")
+            [key, value] = line.split(": ")
             metadata[key] = value
         tools[metadata["name"]] = metadata
     return tools

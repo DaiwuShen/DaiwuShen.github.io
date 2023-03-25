@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+	> Filename        :	alticle-detail.html
+	> Description     :	网页模板
+	> Creat time      :	2023-03-02 20:00
+	> Last modified   :	2023-03-11 20:06
+	> Author          :	Daiwu Shen
+	> Email           :	shendaiwu@163.com
+-->
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,user-scalable=yes ,initial-scale=1.2">
+	<meta name="description" content="由用户输入启动词，根据语料库中统计的词语前后缀关系，自动生成一片新的文章。比如：*春天来了，大地妈妈穿上了碧绿的衣裳。嫩绿的小草从地下探出头来，陶醉在美丽的春天里。*前后缀关系：[前缀，后缀]。上面这段话的前后缀关系有：说明：当需要在两种数据间建立一种关系时，可以使用结构化数据进行存储，比如建立前后缀关系可以采用字典类结构进行存储，C++也有相应的头文件。除此之外，还可以将其抽象为一种类，可以定制">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<link rel="stylesheet" href="../static/css/style.css" type="text/css" />
+	<link rel="stylesheet" href="../static/css/alticle_style.css" type="text/css" />
+	<link rel="stylesheet" href="../static/css/smallScreenstyle.css" type="text/css"
+		media="screen and (max-width : 1200px)" />
+	<link rel="stylesheet" href="http://apps.bdimg.com/libs/highlight.js/9.1.0/styles/github.min.css">
+	<link rel="icon" href="../static/data/img/logo.ico" type="icon" />
+	<title>[C++]狗屁不通文章生成器&ensp;|&ensp;陆柒的个人博客</title>
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+	<script type="text/javascript" src="../static/js/importfile.js"></script>
+	<!-- 百度统计 -->
+	<script>
+		var _hmt = _hmt || [];
+		(function () {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?ae713e943c614183004d728dc40774d6";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+</head>
+
+<body>
+	<div id="header">
+	</div>
+	<!-- 内容区域 -->
+	<div id="content-bar">
+		<div id="content-layout">
+			<div id="content">
+				<!-- 左侧区域 -->
+				<div id="left-area">
+				</div><!--左侧区域结束-->
+				<!-- 右侧区域 -->
+				<div id="right-area">
+					<div id="alticle" class="data-block">
+						<div id="alticle-box">
+							<img src="https://cdn.staticaly.com/gh/DaiwuShen/daiwuImageBed@main/webP/informatrixspace-informatrix-7.6sblxdx8qhkw.webp" alt="informatrixspace-informatrix-7"><div class="alticle-detail"><div class="alticle-title"><h1 id="_title1">[C++]狗屁不通文章生成器</h1></div><div class="paragraph"><blockquote><p>author:&nbsp;陆柒</p><p>date:&nbsp;2023-03-12</p><p>classification:&nbsp;计算机&nbsp;.&nbsp;C++</p><p>tag:&nbsp;C++,&nbsp;文件流,&nbsp;变长数组</p></blockquote><h2 id="_title1-1">1&emsp;概况</h2><p>由用户输入启动词，根据语料库中统计的词语前后缀关系，自动生成一片新的文章。比如：<em>春天来了，大地妈妈穿上了碧绿的衣裳。嫩绿的小草从地下探出头来，陶醉在美丽的春天里。</em></p><p>前后缀关系：[前缀，后缀]。上面这段话的前后缀关系有：</p><table><thead><tr><th>前缀</th><th>后缀 </th></tr></thead><tbody><tr><td>春天</td><td>来/里</td></tr><tr><td>天来</td><td>了   </td></tr><tr><td>天里</td><td>。   </td></tr><tr><td>来了</td><td>,    </td></tr><tr><td>……</td><td>……   </td></tr></tbody></table><p><mark>说明</mark>：</p><ol><li><strong>启动词：</strong>用户输入的一个词，由这个词开始生成文章所有内容。</li><li><strong>前/后缀：</strong>一个词前后连续的n个字符。比如前缀为“春天”，由例句中得到后缀可为“来”或“里”，即表示一种<mark>语言的前后关系</mark>。</li></ol><hr style="border: double 1px deepskyblue; width: 80%;"/><h2 id="_title1-2">2&emsp;基本要求</h2><ol><li><strong>准备语料库：</strong>准备相关文章，存为文件。利用程序读取文章内容，获取文章语句中词语的前后关系，即语料库。<mark>语料库的丰富程度由文章的数量决定</mark>，<mark>语料库又决定程序运行的时间和生成的文章质量</mark>。</li><li><strong>构建前后缀关系：</strong>根据语料库，依据设定的前后缀长度，构建字词的前后缀关系。</li><li><strong>生成文章：</strong>用户输入启动词，根据<mark>启动词为前缀生成后缀</mark>得到文段，再根据文段生成新的前缀，以新前缀生成新后缀以此类推，得到一片文章。</li><li><strong>应尽量避免循环：</strong>有时语料库中可能出现类似“为所欲为”的接龙结构，造成死循环，同时生成的内容也没有了意义。</li><li><strong>输入输出形式：</strong></li></ol><pre><ul class="line-number"><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li></ul><code class="language-cpp" style="padding:0.5em">//输入：
+&ensp;&ensp;2&ensp;&ensp;//前缀词长度
+&ensp;&ensp;2&ensp;&ensp;//后缀词长度
+&ensp;&ensp;春天&ensp;&ensp;//启动词
+//输出：
+&ensp;&ensp;[一篇文章]
+</code></pre><hr style="border: double 1px deepskyblue; width: 80%;"/><h2 id="_title1-3">3&emsp;程序分析</h2><h3 id="_title1-3-1">3.1&emsp;文件流读写</h3><ol><li><strong>读文件：</strong>从多篇文章中读取文件内容为字符串，以前/后缀的长度遍历获取前/后缀，并建立前后缀关系。</li><li><strong>写文件：</strong>为观察程序执行情况，将前/后缀字符对和生成的文章写入文件。</li></ol><h3 id="_title1-3-2">3.2&emsp;建立前后缀关系</h3><p>当需要在两种数据间建立一种关系时，可以使用结构化数据进行存储，比如建立前后缀关系可以采用字典类结构进行存储，C++也有相应的头文件。
+除此之外，还可以将其抽象为一种类，可以定制类的行为和结构。这里选择自建一个类进行存储。
+类设计：</p><ol><li>一个类记录一个前缀和它的所有后缀，</li><li>记录后缀的出现次数</li><li>记录后缀的个数</li></ol><pre><ul class="line-number"><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li></ul><code class="language-cpp" style="padding:0.5em">class&ensp;wordpair{
+&ensp;&ensp;private:
+&ensp;&ensp;&ensp;&ensp;char&ensp;**suffix&ensp;&ensp;//后缀字符串数组，一个后缀存为一个字符串
+&ensp;&ensp;&ensp;&ensp;int&ensp;*freq&ensp;&ensp;&ensp;&ensp;//一个后缀出现的次数
+&ensp;&ensp;public:
+&ensp;&ensp;&ensp;&ensp;char&ensp;*prefix&ensp;&ensp;//前缀字符串，声明为公共成员，方便外部查找
+&ensp;&ensp;&ensp;&ensp;int&ensp;length&ensp;&ensp;&ensp;&ensp;//记录后缀的个数
+}
+</code></pre><h3 id="_title1-3-3">3.3&emsp;字符串切片</h3><p>在C++的头文件&lt;string&gt;中，可以使用string类型代替char类型的字符串，而且对于字符串的操作也更方便。比如</p><pre><ul class="line-number"><li>0</li><li>1</li><li>2</li><li>3</li></ul><code class="language-cpp" style="padding:0.5em">string&ensp;str1&ensp;=&ensp;&quot;abcd&quot;;
+string&ensp;str2&ensp;=&ensp;&quot;efghijk&quot;;
+string&ensp;str3&ensp;=&ensp;str1&ensp;+&ensp;str2;&ensp;&ensp;//&ensp;=&ensp;“abcdefghijk”;&ensp;字符串拼接
+string&ensp;str4&ensp;=&ensp;str3.substr(3,2);&ensp;&ensp;//&ensp;=&ensp;&quot;de&quot;;&ensp;从下标为3的字符开始，截取长度为2的子字符串
+</code></pre><p>以前一直觉得C语言和C++处理字符串很麻烦，现在倒觉得还是很方便的。</p><h3 id="_title1-3-4">3.4&emsp;变长数组</h3><p>C语言和C++中，基础的数组长度相对固定，但也不是不能改变，只是相对麻烦一些。在这个程序中，一个wordpair只存储一个前缀和它的后缀们，所以需要创建一个wordpair类型的列表来存储全部的前后缀。
+我用的方法是来回地复制</p><pre><ul class="line-number"><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li></ul><code class="language-cpp" style="padding:0.5em">int&ensp;main(){
+&ensp;&ensp;int&ensp;len;
+&ensp;&ensp;int&ensp;list[len];&ensp;&ensp;//假设有一个长度为len的整型数组
+&ensp;&ensp;int&ensp;p[len+1];&ensp;&ensp;//开辟一个len+1个整型长度的空间
+&ensp;&ensp;//&ensp;&ensp;把&ensp;list&ensp;复制到&ensp;p，然后
+&ensp;&ensp;list&ensp;=&ensp;new&ensp;int[len+1];&ensp;&ensp;//将list长度+1
+&ensp;&ensp;&ensp;&ensp;//把&ensp;p&ensp;复制过来
+}
+</code></pre><hr style="border: double 1px deepskyblue; width: 80%;"/><h2 id="_title1-4">4&emsp;代码实现</h2><h3 id="_title1-4-1">4.1&emsp;函数：数组加长</h3><p>由于数组加长在程序中多次调用，且需要增长的数组各不相同，所以在这里我定义了一个函数模板，以尽可能少的代码完成相同的任务。</p><pre><ul class="line-number"><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li><li>11</li></ul><code class="language-cpp" style="padding:0.5em">template&lt;class&ensp;T&gt;
+T&ensp;*append2list(T&ensp;*list,&ensp;T&ensp;t,&ensp;int&ensp;len){
+&ensp;&ensp;T&ensp;copy[len&ensp;+&ensp;1];&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;//&ensp;用于备份的空间
+&ensp;&ensp;for(int&ensp;i=0;&ensp;i&lt;len;&ensp;i++){
+&ensp;&ensp;&ensp;&ensp;copy[i]&ensp;=&ensp;list[i];}
+&ensp;&ensp;copy[len]&ensp;=&ensp;t;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;//在末尾增加元素
+&ensp;&ensp;len++;
+&ensp;&ensp;list&ensp;=&ensp;new&ensp;T[len];&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;//变长
+&ensp;&ensp;for(int&ensp;i=0;&ensp;i&lt;len;&ensp;i++){&ensp;&ensp;//拷贝回来
+&ensp;&ensp;&ensp;&ensp;list[i]&ensp;=&ensp;copy[i];}
+&ensp;&ensp;return&ensp;list;
+}
+</code></pre><h3 id="_title1-4-2">4.2&emsp;类wordpair定义</h3><p>首先是类成员，应该有：</p><pre><ul class="line-number"><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li><li>11</li><li>12</li><li>13</li><li>14</li><li>15</li><li>16</li><li>17</li><li>18</li><li>19</li><li>20</li><li>21</li><li>22</li><li>23</li><li>24</li><li>25</li><li>26</li><li>27</li><li>28</li><li>29</li><li>30</li><li>31</li><li>32</li><li>33</li><li>34</li><li>35</li><li>36</li><li>37</li></ul><code class="language-cpp" style="padding:0.5em">class&ensp;Wordpair
+{
+&ensp;&ensp;private:
+&ensp;&ensp;&ensp;&ensp;string&ensp;*suffix;&ensp;&ensp;//后缀列表，一个前缀可能对应多个后缀&ensp;
+&ensp;&ensp;&ensp;&ensp;int&ensp;&ensp;&ensp;*freq;&ensp;&ensp;//&ensp;整型数组，依此记录后缀的频率
+&ensp;&ensp;public:
+&ensp;&ensp;&ensp;&ensp;string&ensp;prefix;&ensp;&ensp;//&ensp;前缀&ensp;
+&ensp;&ensp;&ensp;&ensp;int&ensp;length;&ensp;&ensp;&ensp;&ensp;//&ensp;记录长度&ensp;,&ensp;一个前缀对应size个后缀&ensp;
+&ensp;&ensp;&ensp;&ensp;Wordpair(string&ensp;prefix,&ensp;string&ensp;suffix){&ensp;&ensp;//构造函数
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;this-&gt;prefix&ensp;=&ensp;prefix;
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;this-&gt;suffix&ensp;=&ensp;new&ensp;string[1];
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;this-&gt;suffix[0]&ensp;=&ensp;suffix;
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;this-&gt;freq&ensp;=&ensp;new&ensp;int[1];
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;this-&gt;freq[0]&ensp;=&ensp;1;
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;this-&gt;length&ensp;=&ensp;1;
+&ensp;&ensp;&ensp;&ensp;}
+&ensp;&ensp;&ensp;&ensp;Wordpair(){&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;//构造函数
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;this-&gt;prefix&ensp;=&ensp;&quot;&quot;,
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;this-&gt;suffix&ensp;=&ensp;new&ensp;string[1];
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;this-&gt;suffix[0]&ensp;=&ensp;&quot;&quot;;
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;this-&gt;freq&ensp;=&ensp;new&ensp;int[1];
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;this-&gt;freq[0]&ensp;=&ensp;0;
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;this-&gt;length&ensp;=&ensp;0;
+&ensp;&ensp;&ensp;&ensp;}
+&ensp;&ensp;&ensp;&ensp;/*&ensp;判断这个后缀是否已经有记录，有返回下标，没有则返回-1&ensp;*/
+&ensp;&ensp;&ensp;&ensp;int&ensp;hasRecorded(string&ensp;word){}
+&ensp;&ensp;&ensp;&ensp;
+&ensp;&ensp;&ensp;&ensp;/*&ensp;添加一个后缀&ensp;*/
+&ensp;&ensp;&ensp;&ensp;bool&ensp;push(string&ensp;word){}
+&ensp;&ensp;&ensp;&ensp;
+&ensp;&ensp;&ensp;&ensp;/*&ensp;找出出现次数最多的后缀的下标，采用更可信的后缀&ensp;*/
+&ensp;&ensp;&ensp;&ensp;&ensp;string&ensp;maxFrequency(){}
+&ensp;&ensp;&ensp;&ensp;
+&ensp;&ensp;&ensp;&ensp;/*&ensp;转化为字符串，方便输出&ensp;*/
+&ensp;&ensp;&ensp;&ensp;string&ensp;to_String()const{}
+&ensp;&ensp;&ensp;&ensp;/*&ensp;重载赋值运算符，方便与其他类型的列表共用函数&ensp;*/
+&ensp;&ensp;&ensp;&ensp;Wordpair&amp&ensp;operator=(Wordpair&ensp;&amppair){}
+};
+</code></pre><p>除此之外，还可以重载输出运算符&lt;&lt;，便于调试时在函数中输出wordpair值：</p><pre><ul class="line-number"><li>0</li><li>1</li><li>2</li><li>3</li></ul><code class="language-cpp" style="padding:0.5em">ostream&amp&ensp;operator&lt;&lt;(ostream&amp&ensp;out,&ensp;const&ensp;Wordpair&amp&ensp;w){
+&ensp;&ensp;out&lt;&lt;w.to_String();
+&ensp;&ensp;return&ensp;out;
+}
+</code></pre><h3 id="_title1-4-3">4.3&emsp;函数：读取文件</h3><p>程序运行时，需要读取文件为字符串，当文件较多时把这个功能抽象出来，调用很方便。</p><pre><ul class="line-number"><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li><li>11</li><li>12</li><li>13</li><li>14</li></ul><code class="language-cpp" style="padding:0.5em">//&ensp;读文件&ensp;
+string&ensp;getfile(char&ensp;*path){
+&ensp;&ensp;string&ensp;alticle&ensp;=&ensp;&quot;&quot;;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;//初始化字符串
+&ensp;&ensp;ifstream&ensp;fin(path,&ensp;ios::in);&ensp;&ensp;//打开文件
+&ensp;&ensp;if(!fin.is_open()){
+&ensp;&ensp;&ensp;&ensp;cout&lt;&lt;&quot;文件读取错误！&quot;&lt;&lt;endl;
+&ensp;&ensp;&ensp;&ensp;return&ensp;NULL;
+&ensp;&ensp;}
+&ensp;&ensp;string&ensp;buffer;
+&ensp;&ensp;while(getline(fin,buffer)){&ensp;&ensp;&ensp;&ensp;//读取
+&ensp;&ensp;&ensp;&ensp;alticle.append(buffer);&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;//新的行添加到alticle尾部
+&ensp;&ensp;}
+&ensp;&ensp;fin.close();
+&ensp;&ensp;return&ensp;alticle;
+}
+</code></pre><h3 id="_title1-4-4">4.4&emsp;函数：写入文件</h3><p>主要是写入生成的字符对，方便调试</p><pre><ul class="line-number"><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li></ul><code class="language-cpp" style="padding:0.5em">//&ensp;写文件，记录词组对&ensp;
+void&ensp;exportData(Wordpair&ensp;*pairlist,&ensp;int&ensp;len,&ensp;int&ensp;prelen,&ensp;int&ensp;suflen){
+&ensp;&ensp;char&ensp;path[32];
+&ensp;&ensp;sprintf(path,&quot;./word-pairs(%dx%d).txt&quot;,prelen,suflen);
+&ensp;&ensp;ofstream&ensp;fout(path,&ensp;ios::out);
+&ensp;&ensp;for(int&ensp;i=0;&ensp;i&lt;len;&ensp;i++){
+&ensp;&ensp;&ensp;&ensp;fout&lt;&lt;pairlist[i];&ensp;&ensp;&ensp;&ensp;//在这里就体现了重载&lt;&lt;运算符的好处
+&ensp;&ensp;}
+&ensp;&ensp;fout.close();
+&ensp;&ensp;cout&lt;&lt;&quot;词组对已经写入文件&lt;&ensp;&quot;&lt;&lt;path&lt;&lt;&quot;&ensp;&gt;&quot;&lt;&lt;endl;&ensp;
+}
+</code></pre><h3 id="_title1-4-5">4.5&emsp;核心函数：字符串分割</h3><p>读取到文件后，将字符串从下标0开始，读取前缀+后缀的长度，然后从1开始读取前缀+后缀的长度。<mark>循环的次数&nbsp;=&nbsp;字符串总长度&nbsp;-&nbsp;前缀长度&nbsp;-&nbsp;后缀长度&nbsp;+&nbsp;1</mark>，以保证下标不会溢出。</p><pre><ul class="line-number"><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li><li>11</li><li>12</li><li>13</li><li>14</li><li>15</li><li>16</li><li>17</li><li>18</li><li>19</li></ul><code class="language-cpp" style="padding:0.5em">Wordpair&ensp;*alticle2Wordpair(Wordpair&ensp;*pairlist,&ensp;int&ensp;&amplength,string&ensp;alticle,&ensp;int&ensp;prefix_len,&ensp;int&ensp;suffix_len){
+&ensp;&ensp;for(int&ensp;i=0;&ensp;i&lt;alticle.length()/2-prefix_len-suffix_len+1;&ensp;i++){
+&ensp;&ensp;&ensp;&ensp;bool&ensp;hasrecord&ensp;=&ensp;false;
+&ensp;&ensp;&ensp;&ensp;string&ensp;prefix=alticle.substr(i*2,prefix_len*2);&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;//&ensp;i为什么要×2？因为在devcpp中发现一个中文字符相当于两个英文字符，不乘2会乱码。&ensp;
+&ensp;&ensp;&ensp;&ensp;string&ensp;suffix=alticle.substr((i+prefix_len)*2,suffix_len*2);
+&ensp;&ensp;&ensp;&ensp;for(int&ensp;j=0;j&lt;length;j++){
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;if(pairlist[j].prefix&ensp;==&ensp;prefix){&ensp;&ensp;//&ensp;如果已经有了这个前缀，则添加后缀&ensp;
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;pairlist[j].push(suffix);
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;hasrecord&ensp;=&ensp;true;
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;break;
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;}
+&ensp;&ensp;&ensp;&ensp;}
+&ensp;&ensp;&ensp;&ensp;if(!hasrecord){&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;//&ensp;&ensp;没有这个前缀则词组对列表长度增加&ensp;
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;Wordpair&ensp;pair(prefix,&ensp;suffix);
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;pairlist&ensp;=&ensp;append2list(pairlist,&ensp;pair,&ensp;length);
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;length++;
+&ensp;&ensp;&ensp;&ensp;}
+&ensp;&ensp;}
+&ensp;&ensp;return&ensp;pairlist;
+}
+</code></pre><p>在此基础上，对每次读文件都进行一次，就能获取全部文件的字符对。</p><h3 id="_title1-4-6">4.6&emsp;核心函数：文章拼接</h3><p>得到语料库之后，需要根据语料库拼接出文章。我这里采用的方法有点问题，当完全防止出现循环文本的时候，文章过短，当放开一点对循环文本的时候，循环文本总是出现，算法上想不通。希望有大佬提供一点思路。</p><pre><ul class="line-number"><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li><li>11</li><li>12</li><li>13</li><li>14</li><li>15</li><li>16</li><li>17</li><li>18</li><li>19</li><li>20</li><li>21</li><li>22</li><li>23</li><li>24</li><li>25</li><li>26</li><li>27</li><li>28</li><li>29</li><li>30</li><li>31</li><li>32</li><li>33</li><li>34</li><li>35</li></ul><code class="language-cpp" style="padding:0.5em">//&ensp;判断前缀是否在列表内，有则返回下标，没有则返回-1
+int&ensp;hasrecord(Wordpair&ensp;*pairlist,&ensp;int&ensp;len,&ensp;string&ensp;preword){
+&ensp;&ensp;for(int&ensp;i=0;&ensp;i&lt;len;&ensp;i++){
+&ensp;&ensp;&ensp;&ensp;if(preword&ensp;==&ensp;pairlist[i].prefix){
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;return&ensp;i;
+&ensp;&ensp;&ensp;&ensp;}
+&ensp;&ensp;}
+&ensp;&ensp;return&ensp;-1;
+}
+//&ensp;拼接文章&ensp;
+void&ensp;createAlticle(Wordpair&ensp;*pairlist,&ensp;int&ensp;len,&ensp;string&ensp;startword,&ensp;int&ensp;prefix_len,&ensp;int&ensp;suffix_len){
+&ensp;&ensp;string&ensp;preword&ensp;=&ensp;startword;
+&ensp;&ensp;int&ensp;i=0;
+&ensp;&ensp;int&ensp;index&ensp;=&ensp;hasrecord(pairlist,&ensp;len,&ensp;preword);
+&ensp;&ensp;string&ensp;alticle&ensp;=&ensp;preword;
+&ensp;&ensp;int&ensp;alticle_len&ensp;=&ensp;prefix_len;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;//长度（中文字符标准）&ensp;
+&ensp;&ensp;while(index&ensp;!=&ensp;-1){
+&ensp;&ensp;&ensp;&ensp;string&ensp;newword&ensp;=&ensp;pairlist[index].maxFrequency();
+&ensp;&ensp;&ensp;&ensp;//&ensp;避免循环&ensp;
+&ensp;&ensp;&ensp;&ensp;if(alticle.find(newword)==string::npos&ensp;&ensp;//表示这个前缀没有在文章中出现过&ensp;
+//&ensp;&ensp;&ensp;&ensp;&ensp;||&ensp;alticle_len&ensp;-&ensp;alticle.rfind(newword)&ensp;&gt;&ensp;600&ensp;&ensp;//表示相同的词之间最少间隔多少。加上这个条件后有循环，注释后文章显著变短&ensp;
+&ensp;&ensp;&ensp;&ensp;&ensp;){
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;alticle.append(pairlist[index].maxFrequency());
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;alticle_len&ensp;+=&ensp;suffix_len;
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;preword&ensp;=&ensp;alticle.substr((alticle_len-prefix_len)*2,&ensp;alticle_len*2);}
+&ensp;&ensp;&ensp;&ensp;else{
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;preword&ensp;=&ensp;pairlist[index+1].maxFrequency();
+&ensp;&ensp;&ensp;&ensp;}
+&ensp;&ensp;&ensp;&ensp;index&ensp;=&ensp;hasrecord(pairlist,&ensp;len,&ensp;preword);
+&ensp;&ensp;}
+&ensp;&ensp;cout&lt;&lt;alticle&lt;&lt;endl;
+&ensp;&ensp;ofstream&ensp;fout(CREATE_ALTICLE,&ensp;ios::out);
+&ensp;&ensp;fout&lt;&lt;alticle;
+&ensp;&ensp;fout.close();
+&ensp;&ensp;cout&lt;&lt;&quot;文章写入文件&ensp;&lt;&ensp;&quot;&lt;&lt;CREATE_ALTICLE&lt;&lt;&quot;&ensp;&gt;&quot;&lt;&lt;endl;
+}
+</code></pre><hr style="border: double 1px deepskyblue; width: 80%;"/><h2 id="_title1-5">5&emsp;总结</h2><p>在没有机器学习的支持下，这种拼接的文章十分粗糙，无法准确的给出最优的选择。另一方面，代码写的过于拖沓，算法有待优化。</p></div></div>
+						</div>
+					</div>
+				</div><!--右侧区域结束-->
+			</div>
+		</div>
+		<!-- 图片方大区域 -->
+		<div id="view-figure">
+			<img src="" alt="" />
+		</div>
+	</div><!--内容区域结束-->
+	<div id="foot-bar" class="">
+	</div><!--底栏结束-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/languages/go.min.js"></script>
+	<script>
+		hljs.initHighlightingOnLoad();	/* 代码高亮 */
+		hljs.highlightAll();/* 初始化 */
+	</script>
+	<script type="text/javascript" src="../static/js/insert-data.js"></script>
+	<script src="../static/js/createAlticledetail.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+	> Filename        :	alticle-detail.html
+	> Description     :	网页模板
+	> Creat time      :	2023-03-02 20:00
+	> Last modified   :	2023-03-11 20:06
+	> Author          :	Daiwu Shen
+	> Email           :	shendaiwu@163.com
+-->
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,user-scalable=yes ,initial-scale=1.2">
+	<meta name="description" content="在前面几天的努力下，网页的大致框架基本完成。最开始在网络上查询资料时发现大多数说法是静态网页需要每一页文章都单独编写一个页面，且数据写死在页面中，为了修改一个小数据就需要每一个相关页面都修改一遍，这种说法听上去让人十分头疼。但这样的重复机械劳动让我提不起兴趣来，为了解决这一问题，我开始第二种构想——通过 python 脚本将 markdown 文本转为 html 文本，再将 html 文本嵌入模板">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<link rel="stylesheet" href="../static/css/style.css" type="text/css" />
+	<link rel="stylesheet" href="../static/css/alticle_style.css" type="text/css" />
+	<link rel="stylesheet" href="../static/css/smallScreenstyle.css" type="text/css"
+		media="screen and (max-width : 1200px)" />
+	<link rel="stylesheet" href="http://apps.bdimg.com/libs/highlight.js/9.1.0/styles/github.min.css">
+	<link rel="icon" href="../static/data/img/logo.ico" type="icon" />
+	<title>开发日志2023-03-06&ensp;|&ensp;陆柒的个人博客</title>
+	<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+	<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+	<script type="text/javascript" src="../static/js/importfile.js"></script>
+	<!-- 百度统计 -->
+	<script>
+		var _hmt = _hmt || [];
+		(function () {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?ae713e943c614183004d728dc40774d6";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+</head>
+
+<body>
+	<div id="header">
+	</div>
+	<!-- 内容区域 -->
+	<div id="content-bar">
+		<div id="content-layout">
+			<div id="content">
+				<!-- 左侧区域 -->
+				<div id="left-area">
+				</div><!--左侧区域结束-->
+				<!-- 右侧区域 -->
+				<div id="right-area">
+					<div id="alticle" class="data-block">
+						<div id="alticle-box">
+							<img src="https://cdn.staticaly.com/gh/DaiwuShen/daiwuImageBed@main/webP/informatrixspace-informatrix-12.2jj0koti3ry8.webp" alt="informatrixspace-informatrix-12"><div class="alticle-detail"><div class="alticle-title"><h1 id="_title1">开发日志2023-03-06</h1></div><div class="paragraph"><blockquote><p>author:&nbsp;陆柒</p><p>date:&nbsp;2023-03-06</p><p>classification:&nbsp;其他&nbsp;.&nbsp;日志</p><p>tag:&nbsp;静态网页,&nbsp;日志,&nbsp;Javascript</p></blockquote><h2 id="_title1-1">1&emsp;需要一点点懒惰</h2><p>在前面几天的努力下，网页的大致框架基本完成。最开始在网络上查询资料时发现大多数说法是静态网页需要每一页文章都单独编写一个页面，且数据写死在页面中，为了修改一个小数据就需要<strong>每一个相关页面都修改一遍</strong>，这种说法听上去让人十分头疼。</p><p>但这样的重复机械劳动让我提不起兴趣来，为了解决这一问题，我开始第二种构想——<strong>通过&nbsp;python&nbsp;脚本将&nbsp;markdown&nbsp;文本转为&nbsp;html&nbsp;文本，再将&nbsp;html&nbsp;文本嵌入模板中，得到新的文章&nbsp;html&nbsp;页面。</strong></p><p>随后发现这样的内容依旧是重复的，每一个页面中重复使用模板，虽然可以通过脚本快速修改数据，但一点没有改善修改数据的工作量，<em>小改都要改全体</em>。而且每个页面重复存储相同的内容，对空间是极大的浪费（虽然是托管在&nbsp;<em>github</em>）。于是因为懒惰，我修改了一点最初的方案。</p><hr style="border: double 1px deepskyblue; width: 80%;"/><h2 id="_title1-2">2&emsp;将重复的工作交给机器</h2><h3 id="_title1-2-1">2.1&emsp;数据修改</h3><p>我想到了将网站数据存储在文件中，每次展示只需要<mark>通过&nbsp;js&nbsp;读取固定文件</mark>，将数据填充到特定位置即可，这只需要运用一点点&nbsp;js&nbsp;就能完成。有了这样的方法，我只需要修改文件内的内容，就能修改全部页面的数据。</p><p>最简单的，运用&nbsp;js&nbsp;在&nbsp;html&nbsp;文本中插入数据的方法只需要一条命令：</p><pre><ul class="line-number"><li>0</li><li>1</li></ul><code class="language-javascript" style="padding:0.5em">document.getElementById(&quot;element-id&quot;).innerHTML=&quot;html/text&ensp;string&quot;;&ensp;&ensp;//&ensp;命令将html文本渲染出来，也可以直接插入普通字符串内容
+document.getElementById(&quot;element-id&quot;).innerText=&quot;text&ensp;string&quot;;&ensp;&ensp;//&ensp;命令将修改指定元素的字符内容
+</code></pre><h3 id="_title1-2-2">2.2&emsp;新的页面生成方案</h3><p>有了以上方案，我就开始寻求一种&nbsp;js&nbsp;动态生成页面的方法，每次用户浏览时，只需要将文章内容与模板嵌套形成新的&nbsp;html&nbsp;，再将&nbsp;html&nbsp;展示。但是这样的方案是动态网站的能力，有服务器支持。</p><p>动态网站的特点是<mark>将数据存储在数据库</mark>，不需要将页面存储成文件，所以通常来说动态网站的网址有很多的参数，比如<a href="https://www.baidu.com/s?wd=%E7%99%BE%E5%BA%A6">https://www.baidu.com/s?wd=%E7%99%BE%E5%BA%A6</a>，“？”后面紧跟着的就是页面间传递的字段参数，服务器通过传递的参数实时生成页面。</p><p>静态网站没有服务器的加持，只能<mark>用文件的方式存储数据</mark>，但是静态网页同样可以传递参数！于是我有了新的页面生成方案！</p><h3 id="_title1-2-3">2.3&emsp;说干就干</h3><p>新的方案就是<mark>制作一个文章页面模板</mark>，<mark>用户点击链接时传递文章参数</mark>，<mark>在文章页面加载时通过&nbsp;js&nbsp;获取到文章内容和信息</mark>，<mark>再将获取到的内容进行拼接渲染</mark>。在这几天的测试中，已经实现了这个功能，<strong>实测有用</strong>。</p><p>一点简单的原理：</p><pre><ul class="line-number"><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li></ul><code class="language-javascript" style="padding:0.5em">window.location.href;&ensp;&ensp;//&ensp;获取当前页面的&ensp;url&ensp;
+window.location.search;&ensp;&ensp;//&ensp;获取当前页面&ensp;url&ensp;的属性
+$.ajax({&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;//&ensp;采用ajax获取文件
+&ensp;&ensp;&ensp;&ensp;url:&quot;your-file-path&quot;,&ensp;&ensp;//&ensp;需要获取的文件地址，远程url或服务器上的地址
+&ensp;&ensp;&ensp;&ensp;type:&ensp;&quot;get&quot;,&ensp;&ensp;//&ensp;get请求
+&ensp;&ensp;&ensp;&ensp;async:&ensp;false,
+&ensp;&ensp;&ensp;&ensp;error:&ensp;function(){...错误处理程序...}
+})
+</code></pre><p>更具体的实现方法另外总结后发出。</p><hr style="border: double 1px deepskyblue; width: 80%;"/><h2 id="_title1-3">3&emsp;总结</h2><p>这次的方案让我茅塞顿开，很多方法其实是都是通用，不用在乎网站静态与动态的差异，条件都是创造出来的。有条件要上，没有条件创造条件也要上！</p></div></div>
+						</div>
+					</div>
+				</div><!--右侧区域结束-->
+			</div>
+		</div>
+		<!-- 图片方大区域 -->
+		<div id="view-figure">
+			<img src="" alt="" />
+		</div>
+	</div><!--内容区域结束-->
+	<div id="foot-bar" class="">
+	</div><!--底栏结束-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/languages/go.min.js"></script>
+	<script>
+		hljs.initHighlightingOnLoad();	/* 代码高亮 */
+		hljs.highlightAll();/* 初始化 */
+	</script>
+	<script type="text/javascript" src="../static/js/insert-data.js"></script>
+	<script src="../static/js/createAlticledetail.js"></script>
+</body>
+
+</html>
