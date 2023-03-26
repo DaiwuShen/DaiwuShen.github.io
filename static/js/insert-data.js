@@ -167,22 +167,25 @@ function delta_time(start_time, end_time) {
 
 // 好用的功能
 document.addEventListener('copy', function (event) {
+    insertinformation(event, 500)
+});
+
+function insertinformation(event, step) {
     let clipboardData = event.clipboardData || window.clipboardData;
     if (!clipboardData) { return; }
     var selection;
     var blogName = '陆柒的个人博客';
     selection = window.getSelection() ? window.getSelection().toString() : document.selection.createRange().text;
-    var pagelink = "「本文来源：" + blogName + "<br/>原文链接：" + document.location.href + "」";
+    var pagelink = "\"「本文来源：" + blogName + "; 原文链接：" + decodeURI(document.location.href) + "」\"";
     if (selection) {
         event.preventDefault();
         var text = "";
         var len = selection.length;
-        for (var i = 0; i < len / 100 - 1; i++) {
-            text += selection.slice(i * 100, i * 100 + 100) + pagelink;
+        for (var i = 0; i < len / step; i++) {
+            text += selection.slice(i * step, (i + 1) * step) + pagelink;
         }
         clipboardData.setData('text/plain', text);
-        console.log(text)
     }
-});
+}
 
 

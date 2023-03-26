@@ -22,8 +22,10 @@ italic_re = re.compile("_[^\*_]+?_|\*[^\*_]+?\*")
 def parseMdstrong(line: str):
     strong_text = strong_re.findall(line)
     for word in strong_text:
+        # index = line.index(word)
+        # print(re.match(r"[\u4e00-\u9fa5][\*_]{2}[a-zA-Z]"))
         line = line.replace(
-            word, "<strong>"+word[2:-2]+"</strong>")
+            word, "&nbsp;<strong>"+word[2:-2]+"</strong>&nbsp;")
     return line
 
 
@@ -31,7 +33,7 @@ def parseMdstrong(line: str):
 def parseMdhighlight(line: str):
     highlight_text = highlight_re.findall(line)
     for word in highlight_text:
-        line = line.replace(word, "<mark>"+word[2:-2]+"</mark>")
+        line = line.replace(word, "&nbsp;<mark>"+word[2:-2]+"</mark>&nbsp;")
     return line
 
 
@@ -39,7 +41,7 @@ def parseMdhighlight(line: str):
 def parseMditalic(line: str):
     italic_text = italic_re.findall(line)
     for word in italic_text:
-        line = line.replace(word, "<em>"+word[1:-1]+"</em>")
+        line = line.replace(word, "&nbsp;<em>"+word[1:-1]+"</em>&nbsp;")
     return line
 
 
@@ -50,7 +52,17 @@ def parseMdspecial(line: str):
 
 # 转义字符替换
 def replaceSymbol(line: str, space: str = "&nbsp;"):
-    return line.replace("&", "&amp").replace("<", "&lt;").replace(">", "&gt;").replace("\"", "&quot;").replace(" ", space).replace("\t", space*2)
+    return line.replace("&", "&amp").replace("<", "&lt;").replace(">", "&gt;").replace("\"", "&quot;").replace(" ", space).replace("\t", space*4)
+
+
+# 格式化中英文字符
+def formatEN_CH(line: str):
+    en_zh = re.findall(r"[\u4e00-\u9fa5][a-zA-Z\d\-\+\[\(\{\/]", line)
+    en_zh += re.findall(r"[a-zA-Z\d\-\+\]\)\}\/][\u4e00-\u9fa5]", line)
+    en_zh += re.findall(r"[,\.;:\'\"\!\?][\u4e00-\u9fa5]", line)
+    for word in en_zh:
+        line = line.replace(word, word[0]+" "+word[1])
+    return line
 
 
 # 解析超链接
@@ -60,10 +72,10 @@ def parseMdlink(line: str):
         text_url = re.compile("[^\!\[\]\(\)]+").findall(link)
         if link[0] == "[":
             line = line.replace(link, "<a href=\"" +
-                                text_url[1] + "\">" + text_url[0] + "</a>")
+                                text_url[1] + "\">" + formatEN_CH(text_url[0]) + "</a>")
         else:
             line = line.replace(link, "<img src=\"" +
-                                text_url[1]+"\" alt=\""+text_url[0]+"\">")
+                                text_url[1]+"\" alt=\"" + text_url[0] + "\">")
     return line
 
 
@@ -75,18 +87,19 @@ def parseMdquote(string: str):
     subquote = ""
     length = len(lines)-1 if lines[-1] == "" else len(lines)
     while i < length:
-        if re.match(r"^(>\x20){2}", lines[i]) != None:
-            while re.match(r"^(>\x20){2}", lines[i]) != None:
-                subquote += re.sub(r"^[>]\x20", "", lines[i])
+        if re.match(r"^(>\x20?){2}", lines[i]) != None:
+            while re.match(r"^(>\x20?){2}", lines[i]) != None:
+                subquote += re.sub(r"^[>]\x20", "", lines[i])+"\n"
                 i += 1
                 if i == length:
                     break
             quote_html += parseMdquote(subquote)
+            subquote = ""
         else:
             if len(lines[i]) > 2:
                 quote_html += "<p>" + \
                     parseMdlink(parseMdspecial(
-                        replaceSymbol(lines[i][2:])))+"</p>"
+                        replaceSymbol(formatEN_CH(lines[i][2:]))))+"</p>"
             i += 1
     return quote_html+"</blockquote>"
 
@@ -110,7 +123,8 @@ def parseMdlist(string: str):
         else:
             lines[i] = re.sub(r"^([\d]+\.|-)\x20", "", lines[i])
             list_html += "<li>" + \
-                parseMdlink(parseMdspecial(replaceSymbol(lines[i]))) + "</li>"
+                parseMdlink(parseMdspecial(replaceSymbol(
+                    formatEN_CH(lines[i])))) + "</li>"
             i += 1
     list_html += "</"+list_type+">"
     return list_html
@@ -131,7 +145,7 @@ def parseMdtable(string: str):
         tdata = re.sub(r"\x20+\|\x20+", "|", line[2:-2]).split("|")
         table_html += "<tr>"
         for td in tdata:
-            table_html += "<td>"+parseMdlink(td)+"</td>"
+            table_html += "<td>"+parseMdlink(formatEN_CH(td))+"</td>"
         table_html += "</tr>"
     return table_html+"</tbody></table>"
 
@@ -170,7 +184,7 @@ def parseMdblock(blocks: list):
         # 解析标题
         if title_re.match(block) != None:
             title = parseMdspecial(replaceSymbol(
-                block.replace(title_re.match(block)[0], ""), "&emsp;"))
+                block.replace(title_re.match(block)[0], "")))
             level = block.index(" ")
             if level == 1:
                 title_num[0] += 1
@@ -226,12 +240,13 @@ def parseMdblock(blocks: list):
         # 普通文本
         else:
             block_html += "<p>" + \
-                parseMdlink(parseMdspecial(replaceSymbol(block)))+"</p>"
+                parseMdlink(parseMdspecial(
+                    replaceSymbol(formatEN_CH(block))))+"</p>"
             description += block
         alticle_html += block_html
     description = description.replace("\n", "").replace(
         "==", "").replace("**", "").replace("__", "").replace("_", "")
-    return [alticle_html+"</div></div>", description[:200]]
+    return [alticle_html+"</div></div>", description[:160]]
 
 
 if __name__ == "__main__":

@@ -4,6 +4,13 @@ import datetime
 
 
 default_img = "https://cdn.staticaly.com/gh/DaiwuShen/daiwuImageBed@main/webP/informatrixspace-informatrix-16.27y0r3eip9mo.webp"
+sitemap = "/home/evelden/文档/CodeProject/LineMatrix/urls.txt"
+siteurls = ["http://informatrix.space", "https://informatrix.space", "https://www.informatrix.space",
+            "http://informatrix.space/index.html", "https://informatrix.space/index.html", "https://www.informatrix.space/index.html",
+            "http://informatrix.space/alticle-list.html", "https://informatrix.space/alticle-list.html", "https://www.informatrix.space/alticle-list.html",
+            "http://informatrix.space/class.html", "https://informatrix.space/class.html", "https://www.informatrix.space/class.html",
+            "http://informatrix.space/tags.html", "https://informatrix.space/tags.html", "https://www.informatrix.space.html",
+            "http://informatrix.space/404.html", "https://informatrix.space/404.html", "https://www.informatrix.space/404.html"]
 data_count = "static/data/json/data_count.json"
 alticle_count = "static/data/json/alticle_count.json"
 tool_count = "static/data/json/tools_count.json"
@@ -198,6 +205,7 @@ def updateDatacount(alticlelist, tools):
     site_data["tools"] = tools
     with open(data_count, "w") as ofh:
         ofh.write(str(site_data).replace("\'", "\""))
+    return site_data
 
 
 def getToolmetadata():
@@ -234,7 +242,24 @@ def updateToolcount():
     return toollist
 
 
+def siteMap(sitedata: dict):
+    for name in sitedata["alticles"].keys():
+        siteurls.append(
+            "http://informatrix.space/alticle-list/"+name+".html")
+        siteurls.append("https://informatrix.space/alticle-list/"+name+".html")
+        siteurls.append(
+            "https://www.informatrix.space/alticle-list/"+name+".html")
+    for name in sitedata["tools"].keys():
+        siteurls.append("http://informatrix.space/tool/"+name+".html")
+        siteurls.append("https://informatrix.space/tool/"+name+".html")
+        siteurls.append("https://www.informatrix.space/tool/"+name+".html")
+    with open(sitemap, "w") as fout:
+        for url in siteurls:
+            fout.write(url+"\n")
+
+
 if __name__ == "__main__":
     alticlelist = updateAlticlecount()
     toollist = updateToolcount()
-    updateDatacount(alticlelist=alticlelist, tools=toollist)
+    sitedata = updateDatacount(alticlelist=alticlelist, tools=toollist)
+    siteMap(sitedata)

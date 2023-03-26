@@ -1,19 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-<!--
-	> Filename        :	alticle-detail.html
-	> Description     :	网页模板
-	> Creat time      :	2023-03-02 20:00
-	> Last modified   :	2023-03-11 20:06
-	> Author          :	Daiwu Shen
-	> Email           :	shendaiwu@163.com
--->
+<html lang="zh">
 
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width,user-scalable=yes ,initial-scale=1.2">
-	<meta name="description" content="在记录笔记或撰写文章时，时常需要突出重点，让自己和读者关注到重要内容。在 markdown 和 html 中，常见的着重样式有加粗，高亮，斜体。在我的[个人博客](https://www.informatrix.space)中，为了更方便更完整地转换格式，在转换脚本中也加入了这方面的转换。markdown：html：在 markdown 中加粗样式虽然有两种标记，但都是前后各两个“*”或“”进行包">
+	<meta name="description" content="在记录笔记或撰写文章时，时常需要突出重点，让自己和读者关注到重要内容。在 markdown 和 html 中，常见的着重样式有加粗，高亮，斜体。在我的[个人博客](https://www.informatrix.space)中，为了更方便更完整地转换格式，在转换脚本中也加入了这方面的转换。markdown：html：在">
 	<meta http-equiv="Access-Control-Allow-Origin" content="*">
 	<link rel="stylesheet" href="../static/css/style.css" type="text/css" />
 	<link rel="stylesheet" href="../static/css/alticle_style.css" type="text/css" />
@@ -51,43 +43,43 @@
 				<div id="right-area">
 					<div id="alticle" class="data-block">
 						<div id="alticle-box">
-							<img src="https://cdn.staticaly.com/gh/DaiwuShen/daiwuImageBed@main/blog/anime-anime-girls-science-fiction-fantasy-girl-Fantasy-Architecture-2210141-wallhere.com.jpg" alt="anime-anime-girls-science-fiction-fantasy-girl-Fantasy-Architecture-2210141-wallhere.com"><div class="alticle-detail"><div class="alticle-title"><h1 id="_title1">「Javascript」解析markdown为html——特殊样式篇</h1></div><div class="paragraph"><blockquote><p>author:&nbsp;陆柒</p><p>date:&nbsp;2023-03-21</p><p>classification:&nbsp;计算机&nbsp;.&nbsp;javascript</p><p>tag:&nbsp;Javascript,&nbsp;解析,&nbsp;markdown,&nbsp;html</p></blockquote><h2 id="_title1-1">1&emsp;前言</h2><p>在记录笔记或撰写文章时，时常需要突出重点，让自己和读者关注到重要内容。在&nbsp;markdown&nbsp;和&nbsp;html&nbsp;中，常见的着重样式有<strong>加粗</strong>，<mark>高亮</mark>，<em>斜体</em>。在我的<a href="https://www.informatrix.space">个人博客</a>中，为了更方便更完整地转换格式，在转换脚本中也加入了这方面的转换。</p><hr style="border: double 1px deepskyblue; width: 80%;"/><h2 id="_title1-2">2&emsp;格式分析</h2><h3 id="_title1-2-1">2.1&emsp;加粗</h3><p>markdown：</p><pre><ul class="line-number"><li>0</li><li>1</li></ul><code class="language-markdown" style="padding:0.5em">**markdown加粗样式**
+							<img src="https://cdn.staticaly.com/gh/DaiwuShen/daiwuImageBed@main/blog/anime-anime-girls-science-fiction-fantasy-girl-Fantasy-Architecture-2210141-wallhere.com.jpg" alt="anime-anime-girls-science-fiction-fantasy-girl-Fantasy-Architecture-2210141-wallhere.com"><div class="alticle-detail"><div class="alticle-title"><h1 id="_title1">「Javascript」解析markdown为html——特殊样式篇</h1></div><div class="paragraph"><blockquote><p>author:&nbsp;陆柒</p><p>date:&nbsp;2023-03-21</p><p>classification:&nbsp;计算机&nbsp;.&nbsp;javascript</p><p>tag:&nbsp;Javascript,&nbsp;解析,&nbsp;markdown,&nbsp;html</p></blockquote><h2 id="_title1-1">1&nbsp;前言</h2><p>在记录笔记或撰写文章时，时常需要突出重点，让自己和读者关注到重要内容。在&nbsp;markdown&nbsp;和&nbsp;html&nbsp;中，常见的着重样式有&nbsp;<strong>加粗</strong>&nbsp;，&nbsp;<mark>高亮</mark>&nbsp;，&nbsp;<em>斜体</em>&nbsp;。在我的&nbsp;<a href="https://www.informatrix.space">个人博客</a>&nbsp;中，为了更方便更完整地转换格式，在转换脚本中也加入了这方面的转换。</p><hr style="border: double 1px deepskyblue; width: 80%;"/><h2 id="_title1-2">2&nbsp;格式分析</h2><h3 id="_title1-2-1">2.1&nbsp;加粗</h3><p>markdown：</p><pre><ul class="line-number"><li>0</li><li>1</li></ul><code class="language-markdown" style="padding:0.5em">**markdown加粗样式**
 __markdown加粗样式__
 </code></pre><p>html：</p><pre><ul class="line-number"><li>0</li></ul><code class="language-html" style="padding:0.5em">&lt;strong&gt;html加粗样式&lt;/strong&gt;
-</code></pre><p>在&nbsp;markdown&nbsp;中加粗样式虽然有两种标记，但都是<mark>前后各两个“*”或“_”进行包裹</mark>，可以精确地对两符号之间的内容渲染加粗样式。对应于&nbsp;html&nbsp;则只需用&nbsp;&lt;strong&gt;&nbsp;标签包裹即可。</p><h3 id="_title1-2-2">2.2&emsp;斜体</h3><p>markdown：</p><pre><ul class="line-number"><li>0</li><li>1</li></ul><code class="language-markdown" style="padding:0.5em">*markdown斜体*
+</code></pre><p>在&nbsp;markdown&nbsp;中加粗样式虽然有两种标记，但都是&nbsp;<mark>前后各两个“*”或“_”进行包裹</mark>&nbsp;，可以精确地对两符号之间的内容渲染加粗样式。对应于&nbsp;html&nbsp;则只需用&nbsp;&lt;strong&gt;&nbsp;标签包裹即可。</p><h3 id="_title1-2-2">2.2&nbsp;斜体</h3><p>markdown：</p><pre><ul class="line-number"><li>0</li><li>1</li></ul><code class="language-markdown" style="padding:0.5em">*markdown斜体*
 _markdown斜体_
 </code></pre><p>html：</p><pre><ul class="line-number"><li>0</li></ul><code class="language-html" style="padding:0.5em">&lt;em&gt;html斜体&lt;/em&gt;
-</code></pre><p>markdown&nbsp;语法很简单，<mark>首尾各一个“*”或“_”时表示斜体</mark>，两个时表示加粗。对应于&nbsp;html&nbsp;的&lt;em&gt;标签。</p><h3 id="_title1-2-3">2.3&emsp;高亮</h3><p>markdown：</p><pre><ul class="line-number"><li>0</li></ul><code class="language-less" style="padding:0.5em">==markdown高亮样式==
+</code></pre><p>markdown&nbsp;语法很简单，&nbsp;<mark>首尾各一个“*”或“_”时表示斜体</mark>&nbsp;，两个时表示加粗。对应于&nbsp;html&nbsp;的&lt;em&gt;标签。</p><h3 id="_title1-2-3">2.3&nbsp;高亮</h3><p>markdown：</p><pre><ul class="line-number"><li>0</li></ul><code class="language-less" style="padding:0.5em">==markdown高亮样式==
 </code></pre><p>html：</p><pre><ul class="line-number"><li>0</li><li>1</li></ul><code class="language-html" style="padding:0.5em">&lt;span&ensp;style=&quot;background-color:yellow&quot;&gt;html高亮&lt;/span&gt;
 &lt;mark&gt;html高亮&lt;/mark&gt;
-</code></pre><p>在&nbsp;html&nbsp;中两种方式都有，但是直接使用&nbsp;mark&nbsp;标签是专用来标记的标签，使用更方便。</p><hr style="border: double 1px deepskyblue; width: 80%;"/><h2 id="_title1-3">3&emsp;代码</h2><h3 id="_title1-3-1">3.1&emsp;解析加粗样式</h3><pre><ul class="line-number"><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li></ul><code class="language-javascript" style="padding:0.5em">function&ensp;parseMdstrong(str)&ensp;{
-&ensp;&ensp;var&ensp;strong_text&ensp;=&ensp;str.match(/(\*\*|__)(.+?)(\*\*|__)/g);//匹配加粗文本，正则中(.+?)的？是为了避免过度匹配把多个加粗匹配成一个
-&ensp;&ensp;if&ensp;(strong_text&ensp;!=&ensp;null)&ensp;{//&ensp;如果有这个样式
-&ensp;&ensp;&ensp;&ensp;for&ensp;(var&ensp;i&ensp;=&ensp;0;&ensp;i&ensp;&lt;&ensp;strong_text.length;&ensp;i++)&ensp;{
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;str&ensp;=&ensp;str.replace(strong_text[i],&ensp;&quot;&lt;strong&gt;&quot;&ensp;+&ensp;strong_text[i].match(/[^(**)^(__)]+/g)[0]&ensp;+&ensp;&quot;&lt;/strong&gt;&quot;);//&ensp;替换成&ensp;html&ensp;标签
+</code></pre><p>在&nbsp;html&nbsp;中两种方式都有，但是直接使用&nbsp;mark&nbsp;标签是专用来标记的标签，使用更方便。</p><hr style="border: double 1px deepskyblue; width: 80%;"/><h2 id="_title1-3">3&nbsp;代码</h2><h3 id="_title1-3-1">3.1&nbsp;解析加粗样式</h3><pre><ul class="line-number"><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li></ul><code class="language-javascript" style="padding:0.5em">function&ensp;parseMdstrong(str)&ensp;{
+&ensp;&ensp;&ensp;&ensp;var&ensp;strong_text&ensp;=&ensp;str.match(/(\*\*|__)(.+?)(\*\*|__)/g);//匹配加粗文本，正则中(.+?)的？是为了避免过度匹配把多个加粗匹配成一个
+&ensp;&ensp;&ensp;&ensp;if&ensp;(strong_text&ensp;!=&ensp;null)&ensp;{//&ensp;如果有这个样式
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;for&ensp;(var&ensp;i&ensp;=&ensp;0;&ensp;i&ensp;&lt;&ensp;strong_text.length;&ensp;i++)&ensp;{
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;str&ensp;=&ensp;str.replace(strong_text[i],&ensp;&quot;&lt;strong&gt;&quot;&ensp;+&ensp;strong_text[i].match(/[^(**)^(__)]+/g)[0]&ensp;+&ensp;&quot;&lt;/strong&gt;&quot;);//&ensp;替换成&ensp;html&ensp;标签
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;}
 &ensp;&ensp;&ensp;&ensp;}
-&ensp;&ensp;}
-&ensp;&ensp;return&ensp;str;
+&ensp;&ensp;&ensp;&ensp;return&ensp;str;
 }
-</code></pre><h3 id="_title1-3-2">3.2&emsp;解析斜体样式</h3><pre><ul class="line-number"><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li></ul><code class="language-javascript" style="padding:0.5em">function&ensp;parseMditalic(str)&ensp;{
-&ensp;&ensp;var&ensp;em_text&ensp;=&ensp;str.match(/(_|\*)(.+?)(_|\*)/g);//匹配斜体文本，同样为了避免正则贪婪匹配
-&ensp;&ensp;if&ensp;(em_text&ensp;!=&ensp;null)&ensp;{
-&ensp;&ensp;&ensp;&ensp;for&ensp;(var&ensp;i&ensp;=&ensp;0;&ensp;i&ensp;&lt;&ensp;em_text.length;&ensp;i++)&ensp;{
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;str&ensp;=&ensp;str.replace(em_text[i],&ensp;&quot;&lt;em&gt;&quot;&ensp;+&ensp;em_text[i].match(/[^_^*]+/g)[0]&ensp;+&ensp;&quot;&lt;/em&gt;&quot;);//&ensp;替换成&ensp;html&ensp;标签
+</code></pre><h3 id="_title1-3-2">3.2&nbsp;解析斜体样式</h3><pre><ul class="line-number"><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li></ul><code class="language-javascript" style="padding:0.5em">function&ensp;parseMditalic(str)&ensp;{
+&ensp;&ensp;&ensp;&ensp;var&ensp;em_text&ensp;=&ensp;str.match(/(_|\*)(.+?)(_|\*)/g);//匹配斜体文本，同样为了避免正则贪婪匹配
+&ensp;&ensp;&ensp;&ensp;if&ensp;(em_text&ensp;!=&ensp;null)&ensp;{
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;for&ensp;(var&ensp;i&ensp;=&ensp;0;&ensp;i&ensp;&lt;&ensp;em_text.length;&ensp;i++)&ensp;{
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;str&ensp;=&ensp;str.replace(em_text[i],&ensp;&quot;&lt;em&gt;&quot;&ensp;+&ensp;em_text[i].match(/[^_^*]+/g)[0]&ensp;+&ensp;&quot;&lt;/em&gt;&quot;);//&ensp;替换成&ensp;html&ensp;标签
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;}
 &ensp;&ensp;&ensp;&ensp;}
-&ensp;&ensp;}
-&ensp;&ensp;return&ensp;str;
+&ensp;&ensp;&ensp;&ensp;return&ensp;str;
 }
-</code></pre><h3 id="_title1-3-3">3.3&emsp;解析高亮样式</h3><pre><ul class="line-number"><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li></ul><code class="language-javascript" style="padding:0.5em">function&ensp;parseMdHighlight(str)&ensp;{
-&ensp;&ensp;var&ensp;highlight_text&ensp;=&ensp;str.match(/==(.+?)==/g);//正则匹配高亮文本
-&ensp;&ensp;if&ensp;(highlight_text&ensp;!=&ensp;null)&ensp;{
-&ensp;&ensp;&ensp;&ensp;for&ensp;(var&ensp;i&ensp;=&ensp;0;&ensp;i&ensp;&lt;&ensp;highlight_text.length;&ensp;i++)&ensp;{
-&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;str&ensp;=&ensp;str.replace(highlight_text[i],&ensp;&quot;&lt;mark&gt;&quot;&ensp;+&ensp;highlight_text[i].match(/[^(==)]+/g)[0]&ensp;+&ensp;&quot;&lt;/mark&gt;&quot;);//&ensp;替换成&ensp;html&ensp;标签
+</code></pre><h3 id="_title1-3-3">3.3&nbsp;解析高亮样式</h3><pre><ul class="line-number"><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li></ul><code class="language-javascript" style="padding:0.5em">function&ensp;parseMdHighlight(str)&ensp;{
+&ensp;&ensp;&ensp;&ensp;var&ensp;highlight_text&ensp;=&ensp;str.match(/==(.+?)==/g);//正则匹配高亮文本
+&ensp;&ensp;&ensp;&ensp;if&ensp;(highlight_text&ensp;!=&ensp;null)&ensp;{
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;for&ensp;(var&ensp;i&ensp;=&ensp;0;&ensp;i&ensp;&lt;&ensp;highlight_text.length;&ensp;i++)&ensp;{
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;str&ensp;=&ensp;str.replace(highlight_text[i],&ensp;&quot;&lt;mark&gt;&quot;&ensp;+&ensp;highlight_text[i].match(/[^(==)]+/g)[0]&ensp;+&ensp;&quot;&lt;/mark&gt;&quot;);//&ensp;替换成&ensp;html&ensp;标签
+&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;}
 &ensp;&ensp;&ensp;&ensp;}
-&ensp;&ensp;}
-&ensp;&ensp;return&ensp;str;
+&ensp;&ensp;&ensp;&ensp;return&ensp;str;
 }
-</code></pre><p>代码中，运用了&nbsp;<mark>match</mark>&nbsp;函数进行正则表达式匹配出特定格式的文本，也运用该函数匹配出样式标记包裹的文本。<a href="https://www.informatrix.space/tool.html?tool=%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%9C%A8%E7%BA%BF%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7">正则表达式测试工具在这里</a>。</p><hr style="border: double 1px deepskyblue; width: 80%;"/><h2 id="_title1-4">4&emsp;其他</h2></div></div>
+</code></pre><p>代码中，运用了&nbsp;&nbsp;<mark>match</mark>&nbsp;&nbsp;函数进行正则表达式匹配出特定格式的文本，也运用该函数匹配出样式标记包裹的文本。<a href="https://www.informatrix.space/tool.html?tool=%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%9C%A8%E7%BA%BF%E6%B5%8B%E8%AF%95%E5%B7%A5%E5%85%B7">正则表达式测试工具在这里</a>。</p><hr style="border: double 1px deepskyblue; width: 80%;"/><h2 id="_title1-4">4&nbsp;其他</h2></div></div>
 						</div>
 					</div>
 				</div><!--右侧区域结束-->

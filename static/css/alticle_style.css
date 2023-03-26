@@ -137,7 +137,8 @@ blockquote {
 	border-left-style: outset;
 	border-left-width: 8px;
 	border-left-color: deepskyblue;
-	padding: 20px 5px 20px 40px;
+	padding: 0 16px;
+	margin: 0 24px 0 40px;
 	background: lavender;
 }
 

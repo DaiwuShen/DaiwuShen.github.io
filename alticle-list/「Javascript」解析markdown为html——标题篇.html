@@ -1,19 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-<!--
-	> Filename        :	alticle-detail.html
-	> Description     :	网页模板
-	> Creat time      :	2023-03-02 20:00
-	> Last modified   :	2023-03-11 20:06
-	> Author          :	Daiwu Shen
-	> Email           :	shendaiwu@163.com
--->
+<html lang="zh">
 
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width,user-scalable=yes ,initial-scale=1.2">
-	<meta name="description" content="在 markodwn 解析中，标题是最简单的格式之一。简单到只需要将 “#” 符号去掉，换之 html 的标题标签即可。在 markdown 中，一条标题的格式为：由此可见 markdown 中标题的格式：一方面， “#” 的个数代表了标题的级数，其中一级标题比较大，与正文字体差距较大，比较适合作为文章标题，二极标题则适合作为章节标题，三级标题适合作小节标题……以上只是我在记录笔记时的个人风格，如">
+	<meta name="description" content="在 markodwn 解析中，标题是最简单的格式之一。简单到只需要将 “#” 符号去掉，换之 html 的标题标签即可。在 markdown 中，一条标题的格式为：由此可见 markdown 中标题的格式：一方面， “#” 的个数代表了标题的级数，其中一级标题比较大，与正文字体差距较大，比较适合作为文章标题，二极标题则">
 	<meta http-equiv="Access-Control-Allow-Origin" content="*">
 	<link rel="stylesheet" href="../static/css/style.css" type="text/css" />
 	<link rel="stylesheet" href="../static/css/alticle_style.css" type="text/css" />
@@ -51,12 +43,12 @@
 				<div id="right-area">
 					<div id="alticle" class="data-block">
 						<div id="alticle-box">
-							<img src="https://cdn.staticaly.com/gh/DaiwuShen/daiwuImageBed@main/webP/informatrixspace-informatrix-18.50s3czapdqm8.webp" alt="banner"><div class="alticle-detail"><div class="alticle-title"><h1 id="_title1">「Javascript」解析markdown为html——标题篇</h1></div><div class="paragraph"><blockquote><p>author:&nbsp;陆柒</p><p>date:&nbsp;2023-03-20</p><p>classification:&nbsp;计算机&nbsp;.&nbsp;javascript</p><p>tag:&nbsp;Javascript,&nbsp;解析,&nbsp;markdown,&nbsp;html,&nbsp;格式转换,&nbsp;目录跳转</p></blockquote><h2 id="_title1-1">1&emsp;前言</h2><p>在&nbsp;markodwn&nbsp;解析中，标题是最简单的格式之一。简单到只需要将&nbsp;“#”&nbsp;符号去掉，换之&nbsp;html&nbsp;的标题标签即可。</p><hr style="border: double 1px deepskyblue; width: 80%;"/><h2 id="_title1-2">2&emsp;格式分析</h2><h3 id="_title1-2-1">2.1&emsp;markdown</h3><p>在&nbsp;markdown&nbsp;中，一条标题的格式为：</p><pre><ul class="line-number"><li>0</li><li>1</li><li>2</li></ul><code class="language-markdown" style="padding:0.5em">#&ensp;title1
+							<img src="https://cdn.staticaly.com/gh/DaiwuShen/daiwuImageBed@main/webP/informatrixspace-informatrix-18.50s3czapdqm8.webp" alt="banner"><div class="alticle-detail"><div class="alticle-title"><h1 id="_title1">「Javascript」解析markdown为html——标题篇</h1></div><div class="paragraph"><blockquote><p>author:&nbsp;陆柒</p><p>date:&nbsp;2023-03-20</p><p>classification:&nbsp;计算机&nbsp;.&nbsp;javascript</p><p>tag:&nbsp;Javascript,&nbsp;解析,&nbsp;markdown,&nbsp;html,&nbsp;格式转换,&nbsp;目录跳转</p></blockquote><h2 id="_title1-1">1&nbsp;前言</h2><p>在&nbsp;markodwn&nbsp;解析中，标题是最简单的格式之一。简单到只需要将&nbsp;“#”&nbsp;符号去掉，换之&nbsp;html&nbsp;的标题标签即可。</p><hr style="border: double 1px deepskyblue; width: 80%;"/><h2 id="_title1-2">2&nbsp;格式分析</h2><h3 id="_title1-2-1">2.1&nbsp;markdown</h3><p>在&nbsp;markdown&nbsp;中，一条标题的格式为：</p><pre><ul class="line-number"><li>0</li><li>1</li><li>2</li></ul><code class="language-markdown" style="padding:0.5em">#&ensp;title1
 ##&ensp;title1.1
 ###&ensp;title1.1.1
-</code></pre><p>由此可见&nbsp;markdown&nbsp;中标题的格式：一方面，&nbsp;<mark>“#”&nbsp;的个数代表了标题的级数</mark>，其中一级标题比较大，与正文字体差距较大，比较适合作为文章标题，二极标题则适合作为章节标题，三级标题适合作小节标题……以上只是我在记录笔记时的个人风格，如何使用完全看个人。</p><p>另一方面，&nbsp;<mark>“#”&nbsp;标记与标题内容之间用空格分隔</mark>，这便给了解析以便利性。于是便有两种方法来得到对应的标题级数：</p><ol><li>数&nbsp;“#”&nbsp;符号的个数，</li><li>获取第一个空格的下标。</li></ol><p>相对来说，获取空格的下标更便捷一些，在&nbsp;javascript&nbsp;中，获取一个字符在字符串中第一次出现的位置只需要函数：</p><pre><ul class="line-number"><li>0</li><li>1</li></ul><code class="language-javascript" style="padding:0.5em">var&ensp;str&ensp;=&ensp;&quot;####&ensp;title1.1.1.1&quot;;
+</code></pre><p>由此可见&nbsp;markdown&nbsp;中标题的格式：一方面，&nbsp;&nbsp;<mark>“#”&nbsp;的个数代表了标题的级数</mark>&nbsp;，其中一级标题比较大，与正文字体差距较大，比较适合作为文章标题，二极标题则适合作为章节标题，三级标题适合作小节标题……以上只是我在记录笔记时的个人风格，如何使用完全看个人。</p><p>另一方面，&nbsp;&nbsp;<mark>“#”&nbsp;标记与标题内容之间用空格分隔</mark>&nbsp;，这便给了解析以便利性。于是便有两种方法来得到对应的标题级数：</p><ol><li>数&nbsp;“#”&nbsp;符号的个数，</li><li>获取第一个空格的下标。</li></ol><p>相对来说，获取空格的下标更便捷一些，在&nbsp;javascript&nbsp;中，获取一个字符在字符串中第一次出现的位置只需要函数：</p><pre><ul class="line-number"><li>0</li><li>1</li></ul><code class="language-javascript" style="padding:0.5em">var&ensp;str&ensp;=&ensp;&quot;####&ensp;title1.1.1.1&quot;;
 var&ensp;level&ensp;=&ensp;str.indexOf(&quot;&ensp;&quot;);
-</code></pre><hr style="border: double 1px deepskyblue; width: 80%;"/><h3 id="_title1-2-2">2.2&emsp;html</h3><p>在&nbsp;html&nbsp;中，标题标记与&nbsp;markdown&nbsp;的标题标记有一一对应的关系，虽然格式不同，但是只需要一点简单的替换就能将&nbsp;markdown&nbsp;解析为html。Html&nbsp;的标题格式为：</p><pre><ul class="line-number"><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li></ul><code class="language-html" style="padding:0.5em">&lt;h1&gt;title1&lt;/h1&gt;
+</code></pre><hr style="border: double 1px deepskyblue; width: 80%;"/><h3 id="_title1-2-2">2.2&nbsp;html</h3><p>在&nbsp;html&nbsp;中，标题标记与&nbsp;markdown&nbsp;的标题标记有一一对应的关系，虽然格式不同，但是只需要一点简单的替换就能将&nbsp;markdown&nbsp;解析为&nbsp;html。Html&nbsp;的标题格式为：</p><pre><ul class="line-number"><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li></ul><code class="language-html" style="padding:0.5em">&lt;h1&gt;title1&lt;/h1&gt;
 &lt;h2&gt;
 &ensp;&ensp;&ensp;&ensp;title1.1
 &lt;/h2&gt;
@@ -66,34 +58,34 @@ var&ensp;level&ensp;=&ensp;str.indexOf(&quot;&ensp;&quot;);
 &lt;h2&gt;
 &ensp;&ensp;&ensp;&ensp;title1.2
 &lt;/h2&gt;
-</code></pre><p>不同标签表示不同等级的标题。</p><hr style="border: double 1px deepskyblue; width: 80%;"/><h2 id="_title1-3">3&emsp;代码</h2><h3 id="_title1-3-1">3.1&emsp;将&emsp;markdown&emsp;解析为&emsp;html</h3><p>单单将&nbsp;markdown&nbsp;文本解析为&nbsp;html&nbsp;文本的实现如下：</p><pre><ul class="line-number"><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li></ul><code class="language-javascript" style="padding:0.5em">var&ensp;str&ensp;=&ensp;&quot;####&ensp;title1.1.1.1&quot;;
+</code></pre><p>不同标签表示不同等级的标题。</p><hr style="border: double 1px deepskyblue; width: 80%;"/><h2 id="_title1-3">3&nbsp;代码</h2><h3 id="_title1-3-1">3.1&nbsp;将&nbsp;markdown&nbsp;解析为&nbsp;html</h3><p>单单将&nbsp;markdown&nbsp;文本解析为&nbsp;html&nbsp;文本的实现如下：</p><pre><ul class="line-number"><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li></ul><code class="language-javascript" style="padding:0.5em">var&ensp;str&ensp;=&ensp;&quot;####&ensp;title1.1.1.1&quot;;
 var&ensp;level&ensp;=&ensp;str.indexOf(&quot;&ensp;&quot;);
 if(level==1){
 &ensp;&ensp;&ensp;&ensp;var&ensp;title&ensp;=&ensp;str.replace(/^#+\x20/g,&quot;&quot;);//把&ensp;#&ensp;标记和分割的空格替换掉，用正则匹配可以匹配任意多个&ensp;#&ensp;，是通用的。
 &ensp;&ensp;&ensp;&ensp;title&ensp;=&ensp;&quot;&lt;h&quot;&ensp;+&ensp;level&ensp;+&ensp;&quot;&gt;&quot;&ensp;+&ensp;title&ensp;+&ensp;&quot;&lt;/h&quot;&ensp;+&ensp;level&ensp;+&ensp;&quot;&gt;&quot;;//用&ensp;html&ensp;相同等级的标题标签包裹，可以跟上一步合写为一句
 }
-</code></pre><p>这里正则表达式的匹配效果如下：</p><img load="lazy" src="https://cdn.staticaly.com/gh/DaiwuShen/daiwuImageBed@main/20230320/informatrixspace-Peek-2023-03-20-10-22.3mlyuoyc74xs.gif" alt="informatrixspace-Peek-2023-03-20-10-22" style="zoom:50%;" /><h3 id="_title1-3-2">3.2&emsp;html&emsp;可跳转目录</h3><p>对于一篇比较长的文章来说，目录是十分有必要的。我希望在自己博客的文章一侧放置一个目录，点击目录就能跳转到对应标题。这需要对&nbsp;html&nbsp;的标题标签设置&nbsp;id&nbsp;，然后在&nbsp;&lt;a&gt;&nbsp;标签的&nbsp;href&nbsp;属性对应到标题即可实现跳转。如下：</p><pre><ul class="line-number"><li>0</li><li>1</li></ul><code class="language-html" style="padding:0.5em">&lt;h1&ensp;id=&quot;title1&quot;&gt;title1&lt;/h1&gt;
+</code></pre><p>这里正则表达式的匹配效果如下：</p><img load="lazy" src="https://cdn.staticaly.com/gh/DaiwuShen/daiwuImageBed@main/20230320/informatrixspace-Peek-2023-03-20-10-22.3mlyuoyc74xs.gif" alt="informatrixspace-Peek-2023-03-20-10-22" style="zoom:50%;" /><h3 id="_title1-3-2">3.2&nbsp;html&nbsp;可跳转目录</h3><p>对于一篇比较长的文章来说，目录是十分有必要的。我希望在自己博客的文章一侧放置一个目录，点击目录就能跳转到对应标题。这需要对&nbsp;html&nbsp;的标题标签设置&nbsp;id&nbsp;，然后在&nbsp;&lt;a&gt;&nbsp;标签的&nbsp;href&nbsp;属性对应到标题即可实现跳转。如下：</p><pre><ul class="line-number"><li>0</li><li>1</li></ul><code class="language-html" style="padding:0.5em">&lt;h1&ensp;id=&quot;title1&quot;&gt;title1&lt;/h1&gt;
 &lt;a&ensp;href=&quot;#title1&quot;&gt;点击跳转到title1&lt;/a&gt;
 </code></pre><p>所以我的解析&nbsp;markdown&nbsp;标题代码如下：</p><pre><ul class="line-number"><li>0</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li><li>11</li><li>12</li><li>13</li><li>14</li><li>15</li><li>16</li><li>17</li><li>18</li><li>19</li><li>20</li></ul><code class="language-javascript" style="padding:0.5em">var&ensp;title_content&ensp;=&ensp;block.replace(/^\#+\x20/g,&ensp;&quot;&quot;);
 title_content&ensp;=&ensp;replaceSpecialstyle(title_content);
-var&ensp;level&ensp;=&ensp;block.indexOf(&quot;&ensp;&quot;);&ensp;&ensp;/*&ensp;以空格的下标判断标题的等级&ensp;*/
+var&ensp;level&ensp;=&ensp;block.indexOf(&quot;&ensp;&quot;);&ensp;&ensp;&ensp;&ensp;/*&ensp;以空格的下标判断标题的等级&ensp;*/
 var&ensp;title&ensp;=&ensp;[0,0,0];//&ensp;分别记录一级、二极、三级标题的个数，
 if&ensp;(level&ensp;==&ensp;1)&ensp;{
-&ensp;&ensp;title[0]++;
-&ensp;&ensp;title[1]&ensp;=&ensp;title[2]&ensp;=&ensp;0;//&ensp;遇到以及标题需要将二极、三级标题的个数清零。因为标题序号都是1.1、2.1.1之类
-&ensp;&ensp;block_html&ensp;+=&ensp;&quot;&lt;div&ensp;class=\&quot;alticle-title\&quot;&gt;&lt;h1&ensp;id=\&quot;_title&quot;&ensp;+&ensp;title[0]&ensp;+&ensp;&quot;\&quot;&gt;&quot;&ensp;+&ensp;title_content&ensp;+&ensp;&quot;&lt;/h1&gt;&lt;/div&gt;&lt;div&ensp;class=\&quot;paragraph\&quot;&gt;&quot;;
+&ensp;&ensp;&ensp;&ensp;title[0]++;
+&ensp;&ensp;&ensp;&ensp;title[1]&ensp;=&ensp;title[2]&ensp;=&ensp;0;//&ensp;遇到以及标题需要将二极、三级标题的个数清零。因为标题序号都是1.1、2.1.1之类
+&ensp;&ensp;&ensp;&ensp;block_html&ensp;+=&ensp;&quot;&lt;div&ensp;class=\&quot;alticle-title\&quot;&gt;&lt;h1&ensp;id=\&quot;_title&quot;&ensp;+&ensp;title[0]&ensp;+&ensp;&quot;\&quot;&gt;&quot;&ensp;+&ensp;title_content&ensp;+&ensp;&quot;&lt;/h1&gt;&lt;/div&gt;&lt;div&ensp;class=\&quot;paragraph\&quot;&gt;&quot;;
 }
 else&ensp;if&ensp;(level&ensp;==&ensp;2)&ensp;{
-&ensp;&ensp;title[1]++;
-&ensp;&ensp;title[2]&ensp;=&ensp;0;&ensp;&ensp;//&ensp;遇到二极标题时，三级标题需要清零
-&ensp;&ensp;block_html&ensp;+=&ensp;&quot;&lt;h2&ensp;id=\&quot;_title&quot;&ensp;+&ensp;title[0]&ensp;+&ensp;&quot;-&quot;&ensp;+&ensp;title[1]&ensp;+&ensp;&quot;\&quot;&gt;&quot;&ensp;+&ensp;title_content&ensp;+&ensp;&quot;&lt;/h2&gt;&quot;;
+&ensp;&ensp;&ensp;&ensp;title[1]++;
+&ensp;&ensp;&ensp;&ensp;title[2]&ensp;=&ensp;0;&ensp;&ensp;&ensp;&ensp;//&ensp;遇到二极标题时，三级标题需要清零
+&ensp;&ensp;&ensp;&ensp;block_html&ensp;+=&ensp;&quot;&lt;h2&ensp;id=\&quot;_title&quot;&ensp;+&ensp;title[0]&ensp;+&ensp;&quot;-&quot;&ensp;+&ensp;title[1]&ensp;+&ensp;&quot;\&quot;&gt;&quot;&ensp;+&ensp;title_content&ensp;+&ensp;&quot;&lt;/h2&gt;&quot;;
 }
 else&ensp;if&ensp;(level&ensp;==&ensp;3)&ensp;{
-&ensp;&ensp;title[2]++;
-&ensp;&ensp;block_html&ensp;+=&ensp;&quot;&lt;h3&ensp;id=\&quot;_title&quot;&ensp;+&ensp;title[0]&ensp;+&ensp;&quot;-&quot;&ensp;+&ensp;title[1]&ensp;+&ensp;&quot;-&quot;&ensp;+&ensp;title[2]&ensp;+&ensp;&quot;\&quot;&gt;&quot;&ensp;+&ensp;title_content&ensp;+&ensp;&quot;&lt;/h3&gt;&quot;;
+&ensp;&ensp;&ensp;&ensp;title[2]++;
+&ensp;&ensp;&ensp;&ensp;block_html&ensp;+=&ensp;&quot;&lt;h3&ensp;id=\&quot;_title&quot;&ensp;+&ensp;title[0]&ensp;+&ensp;&quot;-&quot;&ensp;+&ensp;title[1]&ensp;+&ensp;&quot;-&quot;&ensp;+&ensp;title[2]&ensp;+&ensp;&quot;\&quot;&gt;&quot;&ensp;+&ensp;title_content&ensp;+&ensp;&quot;&lt;/h3&gt;&quot;;
 }
-else&ensp;{&ensp;&ensp;//&ensp;对于其他更小的标题就不用跳转了
-&ensp;&ensp;block_html&ensp;+=&ensp;&quot;&lt;h&quot;&ensp;+&ensp;level&ensp;+&ensp;&quot;&gt;&quot;&ensp;+&ensp;title_content&ensp;+&ensp;&quot;&lt;/h&quot;&ensp;+&ensp;level&ensp;+&ensp;&quot;&gt;&quot;;
+else&ensp;{&ensp;&ensp;&ensp;&ensp;//&ensp;对于其他更小的标题就不用跳转了
+&ensp;&ensp;&ensp;&ensp;block_html&ensp;+=&ensp;&quot;&lt;h&quot;&ensp;+&ensp;level&ensp;+&ensp;&quot;&gt;&quot;&ensp;+&ensp;title_content&ensp;+&ensp;&quot;&lt;/h&quot;&ensp;+&ensp;level&ensp;+&ensp;&quot;&gt;&quot;;
 }
 </code></pre><hr style="border: double 1px deepskyblue; width: 80%;"/><p>以上。
 </p></div></div>
