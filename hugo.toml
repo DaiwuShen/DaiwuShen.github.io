@@ -83,26 +83,36 @@ themesDir = 'themes'
   name = "首页"
   url = "/"
   weight = 1
+  [menu.main.params]
+    icon = "home"
 
 [[menu.main]]
   name = "归档"
   url = "/posts/"
   weight = 2
+  [menu.main.params]
+    icon = "archives"
 
 [[menu.main]]
   name = "分类"
   url = "/categories/"
   weight = 3
+  [menu.main.params]
+    icon = "categories"
 
 [[menu.main]]
   name = "标签"
   url = "/tags/"
   weight = 4
+  [menu.main.params]
+    icon = "tag"
 
 [[menu.main]]
   name = "工具"
   url = "/tools/"
   weight = 5
+  [menu.main.params]
+    icon = "tools"
 
 # ── 社交链接 ──
 [[menu.social]]

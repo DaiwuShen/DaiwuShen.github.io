@@ -1,0 +1,33 @@
+<script>
+(function() {
+    'use strict';
+
+    const SCHEME_KEY = 'StackColorScheme';
+    const schemes = ['light', 'dark', 'tech'];
+
+    // ── 初始化：如果上次是 tech，恢复它 ──
+    const saved = localStorage.getItem(SCHEME_KEY);
+    let cycleIdx = 0;
+    if (saved === 'tech') {
+        cycleIdx = 2;
+        document.documentElement.dataset.scheme = 'tech';
+    } else if (saved === 'dark') {
+        cycleIdx = 1;
+    }
+
+    // ── 捕获阶段拦截点击，阻止 Stack 的 handler 运行 ──
+    document.addEventListener('click', function(e) {
+        const toggle = e.target.closest('#dark-mode-toggle');
+        if (!toggle) return;
+
+        e.stopPropagation(); // 不让事件冒泡到 Stack 的 handler
+
+        cycleIdx = (cycleIdx + 1) % schemes.length;
+        const nextScheme = schemes[cycleIdx];
+
+        document.documentElement.dataset.scheme = nextScheme;
+        localStorage.setItem(SCHEME_KEY, nextScheme);
+        window.dispatchEvent(new CustomEvent('onColorSchemeChange', { detail: nextScheme }));
+    }, true); // capture phase
+})();
+</script>

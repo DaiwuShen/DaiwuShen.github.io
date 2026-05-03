@@ -5,89 +5,159 @@
         </span>
     </button>
 
-    <header>
-        <figure class="site-avatar">
-            <a href="{{ .Site.Home.RelPermalink }}">
-                {{ if .Site.Params.sidebar.avatar }}
-                <img src="{{ .Site.Params.sidebar.avatar }}"
-                    width="80" height="80"
-                    class="site-logo"
-                    loading="lazy"
-                    alt="Avatar">
+    {{- /* ── 侧边栏内容容器（窄屏下由汉堡键控制显隐）── */ -}}
+    <div class="sidebar-content">
+
+    {{- /* ── 作者卡片（侧边栏最上方）── */ -}}
+    <div class="author-card">
+        <header>
+            <figure class="site-avatar">
+                <a href="{{ .Site.Home.RelPermalink }}">
+                    {{ if .Site.Params.sidebar.avatar }}
+                    <img src="{{ .Site.Params.sidebar.avatar }}"
+                        width="80" height="80"
+                        class="site-logo"
+                        loading="lazy"
+                        alt="Avatar">
+                    {{ end }}
+                </a>
+                {{ with .Site.Params.sidebar.emoji }}
+                    <span class="emoji">{{ . }}</span>
                 {{ end }}
-            </a>
-            {{ with .Site.Params.sidebar.emoji }}
-                <span class="emoji">{{ . }}</span>
-            {{ end }}
-        </figure>
+            </figure>
 
-        <div class="site-meta">
-            <h1 class="site-name"><a href="{{ .Site.Home.RelPermalink }}">{{ .Site.Title }}</a></h1>
-            <h2 class="site-description">{{ .Site.Params.sidebar.subtitle }}</h2>
-        </div>
-    </header>
+            <div class="site-meta">
+                <h1 class="site-name"><a href="{{ .Site.Home.RelPermalink }}">{{ .Site.Title }}</a></h1>
+                <h2 class="site-description">{{ .Site.Params.sidebar.subtitle }}</h2>
+            </div>
+        </header>
 
-    {{- with .Site.Menus.social -}}
-        <ol class="menu-social">
-            {{ range . }}
-                <li>
+        {{- with .Site.Menus.social -}}
+            <div class="social-links">
+                {{ range . }}
                     <a
                         href='{{ .URL }}'
                         {{ if .Params.newTab }}target="_blank"{{ end }}
                         {{ with .Name }}title="{{ . }}"{{ end }}
                         rel="me"
+                        class="social-link"
                     >
                         {{ $icon := default "link" .Params.Icon }}
                         {{ with $icon }}
                             {{ partial "helper/icon" . }}
                         {{ end }}
+                        <span>{{ .Name }}</span>
                     </a>
-                </li>
+                {{ end }}
+            </div>
+        {{- end -}}
+    </div>
+
+    {{- /* ── 菜单卡片 ── */ -}}
+    <nav class="menu-card">
+        <ol class="menu" id="main-menu">
+            {{ $currentPage := . }}
+            {{ range .Site.Menus.main }}
+            {{ $active := or (eq $currentPage.RelPermalink .URL) (or ($currentPage.HasMenuCurrent "main" .) ($currentPage.IsMenuCurrent "main" .)) }}
+            <li {{ if $active }} class='current'{{ end }}>
+                <a href='{{ .URL }}' {{ if .Params.newTab }}target="_blank"{{ end }}>
+                    {{ with .Params.Icon }}
+                        {{ partial "helper/icon" . }}
+                    {{ end }}
+                    <span>{{- .Name -}}</span>
+                </a>
+            </li>
             {{ end }}
-        </ol>
-    {{- end -}}
-
-    <ol class="menu" id="main-menu">
-        {{ $currentPage := . }}
-        {{ range .Site.Menus.main }}
-        {{ $active := or (eq $currentPage.RelPermalink .URL) (or ($currentPage.HasMenuCurrent "main" .) ($currentPage.IsMenuCurrent "main" .)) }}
-        <li {{ if $active }} class='current'{{ end }}>
-            <a href='{{ .URL }}' {{ if .Params.newTab }}target="_blank"{{ end }}>
-                {{ with .Params.Icon }}
-                    {{ partial "helper/icon" . }}
-                {{ end }}
-                <span>{{- .Name -}}</span>
-            </a>
-        </li>
-        {{ end }}
-        <li class="menu-bottom-section">
-            <ol class="menu">
-                {{- $currentLanguageCode := .Language.Lang -}}
-                {{ if hugo.IsMultilingual }}
-                    <li id="i18n-switch">
-                        {{ partial "helper/icon" "language" }}
-                        <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
-                            {{ range .Site.Home.AllTranslations }}
-                                {{ $target := . }}
-                                {{ range $.AllTranslations }}
-                                    {{ if eq .Language.Lang $target.Language.Lang }}
-                                        {{ $target = . }}
+            <li class="menu-bottom-section">
+                <ol class="menu">
+                    {{- $currentLanguageCode := .Language.Lang -}}
+                    {{ if hugo.IsMultilingual }}
+                        <li id="i18n-switch">
+                            {{ partial "helper/icon" "language" }}
+                            <select name="language" title="language" onchange="window.location.href = this.selectedOptions[0].value">
+                                {{ range .Site.Home.AllTranslations }}
+                                    {{ $target := . }}
+                                    {{ range $.AllTranslations }}
+                                        {{ if eq .Language.Lang $target.Language.Lang }}
+                                            {{ $target = . }}
+                                        {{ end }}
                                     {{ end }}
+                                    <option value="{{ $target.RelPermalink }}" {{ if eq $target.Language.Lang $currentLanguageCode }}selected{{ end }}>{{ .Language.LanguageName }}</option>
                                 {{ end }}
-                                <option value="{{ $target.RelPermalink }}" {{ if eq $target.Language.Lang $currentLanguageCode }}selected{{ end }}>{{ .Language.LanguageName }}</option>
-                            {{ end }}
-                        </select>
-                    </li>
-                {{ end }}
+                            </select>
+                        </li>
+                    {{ end }}
 
-                {{ if .Site.Params.colorScheme.toggle }}
-                    <li id="dark-mode-toggle">
-                        {{ partial "helper/icon" "toggle-left" }}
-                        {{ partial "helper/icon" "toggle-right" }}
-                        <span>{{ T "darkMode" }}</span>
-                    </li>
-                {{ end }}
-            </ol>
-        </li>
-    </ol>
+                    {{ if .Site.Params.colorScheme.toggle }}
+                        <li id="dark-mode-toggle">
+                            {{ partial "helper/icon" "toggle-left" }}
+                            {{ partial "helper/icon" "toggle-right" }}
+                            <span>{{ T "darkMode" }}</span>
+                        </li>
+                    {{ end }}
+                </ol>
+            </li>
+        </ol>
+    </nav>
+
+    {{- /* ── 站点统计卡片（侧边栏最底部）── */ -}}
+    <div class="stats-card">
+        <div class="stat-row">
+            <span class="stat-label">{{ partial "helper/icon" "archives" }}文章</span>
+            <span class="stat-value">{{ len (where .Site.RegularPages "Type" "posts") }}</span>
+        </div>
+        <div class="stat-row">
+            <span class="stat-label">{{ partial "helper/icon" "tools" }}工具</span>
+            <span class="stat-value">{{ len (where .Site.RegularPages "Section" "tools") }}</span>
+        </div>
+        <div class="stat-row">
+            <span class="stat-label">{{ partial "helper/icon" "user" }}访问</span>
+            <span class="stat-value"><span id="busuanzi_value_site_pv">0</span></span>
+        </div>
+        <div class="stat-row">
+            <span class="stat-label">{{ partial "helper/icon" "clock" }}运行</span>
+            <span class="stat-value" id="site-runtime">计算中…</span>
+        </div>
+    </div>
+
+    </div>{{- /* end .sidebar-content */ -}}
+
+    <script>
+    (function() {
+        'use strict';
+
+        /* ── 运行时长 ── */
+        var start = new Date(2019, 0, 1);
+        (function updateRuntime() {
+            var now = new Date();
+            var diff = now - start;
+            var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            var years = Math.floor(days / 365);
+            var rem = days % 365;
+            var el = document.getElementById('site-runtime');
+            if (el) el.textContent = years + '年' + rem + '天';
+        })();
+
+        /* ── 汉堡键：窄屏控制整个侧边栏，桌面端不作用 ── */
+        var toggle = document.getElementById('toggle-menu');
+        if (!toggle) return;
+
+        // 克隆按钮以移除主题 TypeScript 已绑定的 #main-menu 事件
+        var newToggle = toggle.cloneNode(true);
+        toggle.parentNode.replaceChild(newToggle, toggle);
+
+        var content = document.querySelector('.sidebar-content');
+        if (!content) return;
+
+        newToggle.addEventListener('click', function() {
+            if (window.innerWidth < 768) {
+                // 窄屏：展开/收起整个侧边栏
+                content.classList.toggle('show');
+                newToggle.classList.toggle('is-active');
+            } else {
+                // 桌面端：汉堡键默认隐藏，此处留空
+            }
+        });
+    })();
+    </script>
 </aside>
