@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>博客 on InforMatrix</title>
+        <link>https://blog.daiwus.cn/tags/%E5%8D%9A%E5%AE%A2/</link>
+        <description>Recent content in 博客 on InforMatrix</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-CN</language>
+        <lastBuildDate>Fri, 01 May 2026 16:00:00 +0800</lastBuildDate><atom:link href="https://blog.daiwus.cn/tags/%E5%8D%9A%E5%AE%A2/index.xml" rel="self" type="application/rss+xml" /><item>
+            <title>你好，世界</title>
+            <link>https://blog.daiwus.cn/posts/hello-world/</link>
+            <pubDate>Fri, 01 May 2026 16:00:00 +0800</pubDate>
+            <guid>https://blog.daiwus.cn/posts/hello-world/</guid>
+            <description>&lt;h2 id=&#34;新的开始&#34;&gt;&lt;a href=&#34;#%e6%96%b0%e7%9a%84%e5%bc%80%e5%a7%8b&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;新的开始&#xA;&lt;/h2&gt;&lt;p&gt;博客已从手写 HTML + JavaScript 迁移到 &lt;strong&gt;Hugo&lt;/strong&gt; 静态站点生成器。&lt;/p&gt;&#xA;&lt;h3 id=&#34;这个博客的特点&#34;&gt;&lt;a href=&#34;#%e8%bf%99%e4%b8%aa%e5%8d%9a%e5%ae%a2%e7%9a%84%e7%89%b9%e7%82%b9&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;这个博客的特点&#xA;&lt;/h3&gt;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;左侧栏&lt;/strong&gt;：作者信息、网站统计&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;右侧内容区&lt;/strong&gt;：文章列表、正文&lt;/li&gt;&#xA;&lt;li&gt;极简风格，专注于内容&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;为什么迁移&#34;&gt;&lt;a href=&#34;#%e4%b8%ba%e4%bb%80%e4%b9%88%e8%bf%81%e7%a7%bb&#34; class=&#34;header-anchor&#34;&gt;&lt;/a&gt;为什么迁移？&#xA;&lt;/h3&gt;&lt;p&gt;手写 HTML 维护太累啦，Hugo 用 Markdown 写文章，自动化生成，舒服多了 😄&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;print(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Hello, Hugo!&amp;#34;&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;后续还会继续完善主题，欢迎常来看看～&lt;/p&gt;&#xA;</description>
+        </item></channel>
+</rss>

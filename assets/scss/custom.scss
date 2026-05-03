@@ -1,0 +1,284 @@
+/* 
+ * 🎨 Custom color palette — Warm Modern
+ * Overrides Stack's default CSS variables
+ */
+
+:root {
+    /* ── Background ── */
+    --body-background: #f7f6f2;
+
+    /* ── Accent ── */
+    --accent-color: #b0796a;
+    --accent-color-darker: #966456;
+    --accent-color-text: #fff;
+
+    /* ── Body text ── */
+    --body-text-color: #5c5c5c;
+
+    /* ── Cards ── */
+    --card-background: #ffffff;
+    --card-background-selected: #f0ebe7;
+    --card-text-color-main: #2d2d2d;
+    --card-text-color-secondary: #6b6b6b;
+    --card-text-color-tertiary: #8a8a8a;
+    --card-separator-color: rgba(200, 190, 180, 0.4);
+
+    /* ── Shadows (softer) ── */
+    --shadow-l1: 0px 2px 6px rgba(160, 140, 120, 0.06), 0px 0px 2px rgba(160, 140, 120, 0.08);
+    --shadow-l2: 0px 6px 14px rgba(160, 140, 120, 0.06), 0px 2px 6px rgba(160, 140, 120, 0.05);
+
+    /* ── Button / interactive ── */
+    --button-background: #b0796a;
+    --button-text-color: #fff;
+    --button-background-hover: #966456;
+
+    /* ── Tag ── */
+    --tag-background: #f0ebe7;
+    --tag-text-color: #6b5b53;
+
+    /* ── Sidebar ── */
+    --sidebar-avatar-size: 80px;
+    --sidebar-element-separation: 16px;
+    --sidebar-padding: 24px;
+
+    /* ── Blockquote ── */
+    --blockquote-border-color: #d4b0a5;
+    --blockquote-background-color: #f8f4f0;
+
+    /* ── Code ── */
+    --code-background-color: #f0ece8;
+    --code-text-color: #5c4a40;
+
+    /* ── Table ── */
+    --table-border-color: #e0d8d0;
+    --tr-even-background-color: #f5f2ed;
+
+    /* ── Link ── */
+    --link-background-color: 200, 180, 168;
+    --link-background-opacity: 0.35;
+    --link-background-opacity-hover: 0.55;
+
+    /* ── Article ── */
+    --article-image-height: 180px;
+}
+
+/* ── Dark mode ── */
+[data-scheme="dark"] {
+    --body-background: #18181a;
+
+    --accent-color: #d4947a;
+    --accent-color-darker: #c48064;
+    --accent-color-text: #000;
+
+    --body-text-color: rgba(255, 255, 255, 0.7);
+
+    --card-background: #242426;
+    --card-background-selected: rgba(255, 255, 255, 0.08);
+    --card-text-color-main: rgba(255, 255, 255, 0.9);
+    --card-text-color-secondary: rgba(255, 255, 255, 0.65);
+    --card-text-color-tertiary: rgba(255, 255, 255, 0.45);
+    --card-separator-color: rgba(255, 255, 255, 0.08);
+
+    --shadow-l1: 0px 2px 8px rgba(0, 0, 0, 0.3), 0px 0px 1px rgba(0, 0, 0, 0.4);
+    --shadow-l2: 0px 8px 20px rgba(0, 0, 0, 0.35), 0px 2px 6px rgba(0, 0, 0, 0.3);
+
+    --button-background: #d4947a;
+    --button-text-color: #1a1a1a;
+    --button-background-hover: #c48064;
+
+    --tag-background: #2f2f32;
+    --tag-text-color: #b8a89e;
+
+    --blockquote-border-color: #806054;
+    --blockquote-background-color: #222224;
+
+    --code-background-color: #2a2a2d;
+    --code-text-color: #b8a89e;
+
+    --table-border-color: #3a3a3d;
+    --tr-even-background-color: #2a2a2d;
+
+    /* For dark mode, keep link bg visible */
+    --link-background-color: 180, 150, 130;
+    --link-background-opacity: 0.2;
+    --link-background-opacity-hover: 0.35;
+
+    --pre-text-color: #f8f8f2;
+    --pre-background-color: #272822;
+}
+
+/* ── Sidebar avatar styling ── */
+.site-avatar {
+    transition: transform 0.2s ease !important;
+}
+.site-avatar:hover {
+    transform: scale(1.05);
+}
+
+/* ── Sidebar menu icons ── */
+#main-menu .menu-item svg {
+    opacity: 0.65;
+}
+
+/* ── Custom bottom section ── */
+.menu-bottom-section {
+    margin-top: auto;
+    border-top: none !important;
+}
+
+/* ── Tool page styling ── */
+.tool-card {
+    background: var(--card-background);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--shadow-l1);
+    padding: var(--card-padding);
+    margin-bottom: var(--section-separation);
+}
+
+.tool-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--card-separator-color);
+}
+
+.tool-card-header svg {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+.tool-card-header h2 {
+    margin: 0;
+    font-size: 1.4rem;
+    color: var(--card-text-color-main);
+}
+
+.tool-card-header .version {
+    font-size: 0.8rem;
+    color: var(--card-text-color-tertiary);
+    margin-left: auto;
+}
+
+.tool-card-description {
+    color: var(--card-text-color-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+
+.tool-card-content {
+    /* Container for tool-specific HTML */
+}
+
+/* ── Tool list grid ── */
+.tool-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+.tool-grid-item {
+    background: var(--card-background);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--shadow-l1);
+    padding: var(--card-padding);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+    display: block;
+    color: var(--card-text-color-main);
+    text-decoration: none;
+}
+
+.tool-grid-item:hover {
+    box-shadow: var(--shadow-l2);
+    transform: translateY(-2px);
+    color: var(--card-text-color-main);
+    text-decoration: none;
+}
+
+.tool-grid-item h3 {
+    margin: 0 0 4px;
+    font-size: 1.1rem;
+}
+
+.tool-grid-item .tool-version {
+    font-size: 0.75rem;
+    color: var(--accent-color);
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.tool-grid-item p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--card-text-color-secondary);
+    line-height: 1.5;
+}
+
+/* ── Tool input styles (ported from toolstyle.css with CSS vars) ── */
+.tool-content input[type="text"],
+.tool-content textarea,
+.tool-content select {
+    background: var(--card-background);
+    border: 1px solid var(--card-separator-color);
+    border-radius: 6px;
+    color: var(--card-text-color-main);
+    font-size: 0.9rem;
+    padding: 8px 12px;
+    transition: border-color 0.2s;
+}
+
+.tool-content input[type="text"]:focus,
+.tool-content textarea:focus {
+    border-color: var(--accent-color);
+    outline: none;
+}
+
+.tool-content input[type="submit"],
+.tool-content button {
+    background: var(--button-background);
+    color: var(--button-text-color);
+    border: none;
+    border-radius: 6px;
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.tool-content input[type="submit"]:hover,
+.tool-content button:hover {
+    background: var(--button-background-hover);
+}
+
+/* ── Help table in regex tool ── */
+.tool-table-help {
+    margin-top: 24px;
+}
+
+.tool-table-help table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tool-table-help caption {
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 1rem;
+    color: var(--card-text-color-main);
+}
+
+.tool-table-help th,
+.tool-table-help td {
+    padding: 6px 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--table-border-color);
+    font-size: 0.85rem;
+}
+
+.tool-table-help th {
+    background: var(--tr-even-background-color); 
+    font-weight: 600;
+}

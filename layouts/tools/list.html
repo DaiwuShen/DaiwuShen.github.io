@@ -1,0 +1,31 @@
+{{ define "title" }}工具 | {{ .Site.Title }}{{ end }}
+
+{{ define "main" }}
+<div class="tool-card">
+    <div class="tool-card-header">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M1 0L0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.971-.148.148a1 1 0 0 0 .292.707l1.216 1.216a2 2 0 0 0 2.829 0l.115-.115a2 2 0 0 0 0-2.829l-1.216-1.216a1 1 0 0 0-.707-.293l-.148.148-.971-.97 2.617-2.654a3.003 3.003 0 0 0-5.878-.851l-.148.148L5.247 5.22a1 1 0 0 0-.293-.708v-.071a1 1 0 0 1-.419-.814L1 0z"/>
+        </svg>
+        <h2>工具集合</h2>
+    </div>
+    <div class="tool-card-content">
+        {{ $tools := where .Site.RegularPages "Section" "tools" }}
+        {{ if $tools }}
+        <div class="tool-grid">
+            {{ range $tools }}
+            <a href="{{ .RelPermalink }}" class="tool-grid-item">
+                <h3>{{ .Title }}</h3>
+                {{ if .Params.version }}<span class="tool-version">{{ .Params.version }}</span>{{ end }}
+                {{ if .Params.description }}<p>{{ .Params.description }}</p>{{ end }}
+            </a>
+            {{ end }}
+        </div>
+        {{ else }}
+        <div style="text-align: center; padding: 40px;">
+            <p style="font-size: 2rem; margin-bottom: 12px;">🔧</p>
+            <p style="color: var(--card-text-color-secondary);">工具开发中，敬请期待～</p>
+        </div>
+        {{ end }}
+    </div>
+</div>
+{{ end }}

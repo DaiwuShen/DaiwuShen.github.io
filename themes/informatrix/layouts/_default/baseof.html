@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.2, user-scalable=yes">
+	<meta name="description" content="{{ .Site.Params.description }}">
+	<link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+	<link rel="stylesheet" href="{{ "css/small.css" | relURL }}" media="screen and (max-width: 1200px)">
+	<link rel="icon" href="{{ "img/logo.ico" | relURL }}" type="icon">
+	<title>{{ block "title" . }}{{ .Site.Title }}{{ end }}</title>
+	{{- if .Site.Params.baidu_analytics }}
+	<script>
+		var _hmt = _hmt || [];
+		(function () {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?{{ .Site.Params.baidu_analytics }}";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+	{{- end }}
+	{{ block "head_extra" . }}{{ end }}
+</head>
+<body>
+	<!-- 顶栏导航 -->
+	{{ partial "header.html" . }}
+
+	<!-- 内容区域 -->
+	<div id="content-bar">
+		<div id="content-layout">
+			<div id="content">
+				<!-- 左侧区域 -->
+				<aside id="left-area">
+					{{ partial "sidebar-author.html" . }}
+					{{ partial "sidebar-info.html" . }}
+				</aside>
+
+				<!-- 右侧区域 -->
+				<main id="right-area">
+					{{ block "main" . }}{{ end }}
+				</main>
+			</div>
+		</div>
+	</div>
+
+	<!-- 底部 -->
+	{{ partial "footer.html" . }}
+</body>
+</html>

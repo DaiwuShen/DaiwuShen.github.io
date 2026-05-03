@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Pages on InforMatrix</title>
+        <link>https://blog.daiwus.cn/page/</link>
+        <description>Recent content in Pages on InforMatrix</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-CN</language><atom:link href="https://blog.daiwus.cn/page/index.xml" rel="self" type="application/rss+xml" /><item>
+            <title>归档</title>
+            <link>https://blog.daiwus.cn/archives/</link>
+            <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+            <guid>https://blog.daiwus.cn/archives/</guid>
+            <description></description>
+        </item><item>
+            <title>搜索</title>
+            <link>https://blog.daiwus.cn/search/</link>
+            <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+            <guid>https://blog.daiwus.cn/search/</guid>
+            <description></description>
+        </item></channel>
+</rss>

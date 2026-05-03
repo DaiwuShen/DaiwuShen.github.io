@@ -1,0 +1,84 @@
+/* InforMatrix Theme - Small Screen (≤1200px) */
+
+@media screen and (max-width: 1200px) {
+    #content {
+        flex-direction: column;
+        width: 100%;
+        max-width: none;
+        padding: 8px;
+    }
+
+    #left-area {
+        width: 100%;
+        min-width: unset;
+    }
+
+    #right-area {
+        width: 100%;
+    }
+
+    #content-layout {
+        min-width: unset;
+    }
+
+    #avatar {
+        height: 150px;
+        width: 150px;
+    }
+
+    .alticle-info {
+        flex-direction: column;
+    }
+
+    .alticle-info > a {
+        width: 100%;
+        min-width: unset;
+        height: 180px;
+    }
+
+    .main-menu-item > svg {
+        display: none;
+    }
+
+    .main-menu-item {
+        min-width: 50px;
+        font-size: 13px;
+    }
+
+    #site-title {
+        font-size: 14px;
+    }
+
+    #logo-bar {
+        padding-left: 12px;
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    #initial-bar {
+        gap: 0;
+        padding: 0 8px;
+    }
+
+    .main-menu-item {
+        min-width: 40px;
+        padding: 0 4px;
+    }
+
+    .main-menu-item > a {
+        font-size: 12px;
+    }
+
+    #site-title {
+        font-size: 12px;
+    }
+
+    #contact {
+        width: 100%;
+    }
+
+    .alticle-info > a {
+        height: 140px;
+    }
+}

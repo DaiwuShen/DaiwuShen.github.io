@@ -1,0 +1,121 @@
+baseURL = 'https://blog.daiwus.cn/'
+languageCode = 'zh-CN'
+title = 'InforMatrix'
+theme = 'stack'
+
+publishDir = 'docs'
+themesDir = 'themes'
+
+# 开启 raw HTML（工具页面需要）
+[markup.goldmark.renderer]
+  unsafe = true
+
+[params]
+  # ── 站点信息 ──
+  mainSections = ["posts"]
+  description = "陆柒的个人博客 — 记录学习、分享知识"
+
+  # ── 页脚 ──
+  [params.footer]
+    since = 2019
+
+  # ── 日期格式 ──
+  [params.dateFormat]
+    published = "2006-01-02"
+    lastUpdated = "2006-01-02"
+
+  # ── 侧边栏 ──
+  [params.sidebar]
+    compact = false
+    avatar = "https://raw.githubusercontent.com/DaiwuShen/daiwuImageBed/main/daiwus-%E9%BE%99%E7%8C%AB.7bls3arxkmf4.gif"
+    subtitle = "You only live once"
+    emoji = "🐱"
+
+  # ── 文章 ──
+  [params.article]
+    headingAnchor = true
+    toc = true
+    readingTime = true
+
+  # ── 配色（切换按钮 + 默认 auto） ──
+  [params.colorScheme]
+    toggle = true
+    default = "auto"
+
+  # ── 头像边框效果（可选） ──
+  [params.imageProcessing]
+    [params.imageProcessing.thumbnail]
+      enabled = true
+
+  # ── 右侧 widgets ──
+  [[params.widgets.homepage]]
+    type = "categories"
+    [params.widgets.homepage.params]
+      limit = 10
+
+  [[params.widgets.homepage]]
+    type = "tag-cloud"
+    [params.widgets.homepage.params]
+      limit = 20
+
+  [[params.widgets.homepage]]
+    type = "archives"
+    [params.widgets.homepage.params]
+      limit = 5
+
+  [[params.widgets.page]]
+    type = "toc"
+
+  # ── 搜索 ──
+  [[params.widgets.homepage]]
+    type = "search"
+
+  # ── 百度统计 ──
+  [params.analytics]
+    baidu = "ae713e943c614183004d728dc40774d6"
+
+  # ── 评论（先关掉待用） ──
+  [params.comments]
+    enabled = false
+
+# ── 导航菜单 ──
+[[menu.main]]
+  name = "首页"
+  url = "/"
+  weight = 1
+
+[[menu.main]]
+  name = "归档"
+  url = "/posts/"
+  weight = 2
+
+[[menu.main]]
+  name = "分类"
+  url = "/categories/"
+  weight = 3
+
+[[menu.main]]
+  name = "标签"
+  url = "/tags/"
+  weight = 4
+
+[[menu.main]]
+  name = "工具"
+  url = "/tools/"
+  weight = 5
+
+# ── 社交链接 ──
+[[menu.social]]
+  name = "GitHub"
+  url = "https://github.com/DaiwuShen"
+  params.icon = "brand-github"
+
+[[menu.social]]
+  name = "CSDN"
+  url = "https://blog.csdn.net/cumtLeibnizDavid"
+  params.icon = "link"
+
+[[menu.social]]
+  name = "Email"
+  url = "mailto:shendaiwu@163.com"
+  params.icon = "link"

@@ -1,0 +1,31 @@
+{{ define "title" }}{{ .Title }} | {{ .Site.Title }}{{ end }}
+
+{{ define "main" }}
+<div class="data-block">
+    <div class="block-title">
+        <div class="block-title-name">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#1d8fed" viewBox="0 0 16 16">
+                <path d="M1 0L0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.971-.148.148a1 1 0 0 0 .292.707l1.216 1.216a2 2 0 0 0 2.829 0l.115-.115a2 2 0 0 0 0-2.829l-1.216-1.216a1 1 0 0 0-.707-.293l-.148.148-.971-.97 2.617-2.654a3.003 3.003 0 0 0-5.878-.851l-.148.148L5.247 5.22a1 1 0 0 0-.293-.708v-.071a1 1 0 0 1-.419-.814L1 0z"/>
+            </svg>
+            <span>{{ .Title }}</span>
+            {{ if .Params.version }}
+            <span style="font-size: 13px; color: #808080; margin-left: 8px;">{{ .Params.version }}</span>
+            {{ end }}
+        </div>
+    </div>
+    {{ if .Params.description }}
+    <p style="padding: 12px 24px 0; color: #808080; font-size: 14px;">{{ .Params.description }}</p>
+    {{ end }}
+    <div class="tool-content" style="padding: 16px 24px 24px;">
+        {{ .Content }}
+    </div>
+</div>
+{{ end }}
+
+{{ define "head_extra" }}
+<link rel="stylesheet" href="{{ "css/toolstyle.css" | relURL }}">
+{{ if .Params.script }}
+  {{ $script := .Params.script }}
+  <script src="{{ printf "js/%s" $script | relURL }}"></script>
+{{ end }}
+{{ end }}

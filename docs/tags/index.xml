@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Tags on InforMatrix</title>
+        <link>https://blog.daiwus.cn/tags/</link>
+        <description>Recent content in Tags on InforMatrix</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>zh-CN</language>
+        <lastBuildDate>Fri, 01 May 2026 16:00:00 +0800</lastBuildDate><atom:link href="https://blog.daiwus.cn/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+            <title>Hugo</title>
+            <link>https://blog.daiwus.cn/tags/hugo/</link>
+            <pubDate>Fri, 01 May 2026 16:00:00 +0800</pubDate>
+            <guid>https://blog.daiwus.cn/tags/hugo/</guid>
+            <description></description>
+        </item><item>
+            <title>博客</title>
+            <link>https://blog.daiwus.cn/tags/%E5%8D%9A%E5%AE%A2/</link>
+            <pubDate>Fri, 01 May 2026 16:00:00 +0800</pubDate>
+            <guid>https://blog.daiwus.cn/tags/%E5%8D%9A%E5%AE%A2/</guid>
+            <description></description>
+        </item></channel>
+</rss>

@@ -1,0 +1,27 @@
+{{ define "title" }}{{ .Title }} | {{ .Site.Title }}{{ end }}
+
+{{ define "main" }}
+<article class="data-block" id="alticle-detail">
+    <div class="block-title">
+        <div class="block-title-name">
+            <span>{{ .Title }}</span>
+        </div>
+    </div>
+    <div style="padding: 0 24px 16px; color: #606060; font-size: 14px; border-bottom: 1px solid #eee;">
+        <span>{{ .Date.Format "2006-01-02" }}</span>
+        {{ with .Params.categories }}
+        <span> | 分类：{{ delimit . " / " }}</span>
+        {{ end }}
+        {{ with .Params.tags }}
+        <span> | 标签：
+            {{ range . }}
+            <a class="tag" href="{{ "/tags/" | relURL }}{{ . | urlize }}">{{ . }}</a>
+            {{ end }}
+        </span>
+        {{ end }}
+    </div>
+    <div class="alticle-content" style="padding: 24px;">
+        {{ .Content }}
+    </div>
+</article>
+{{ end }}
