@@ -12,3 +12,9 @@
 # OS
 .DS_Store
 Thumbs.db
+
+# Unused legacy theme (kept in git but not used)
+/themes/informatrix/
+
+# Redundant old static site components (preserved in handbuild branch)
+/docs/site-part-element/
