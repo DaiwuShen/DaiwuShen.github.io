@@ -8,33 +8,6 @@
     </section>
 
     {{- partial "pagination.html" . -}}
-
-    {{/* === Tools section on homepage === */}}
-    {{- $tools := where .Site.RegularPages "Section" "tools" -}}
-    {{- if $tools -}}
-    <section class="home-section tools-section">
-        <h2 class="section-title">
-            {{ partial "helper/icon" "tools" }}
-            <span>{{ T "home.tools" | default "工具" }}</span>
-        </h2>
-        <div class="tools-card-grid">
-            {{ range $tools }}
-            <a href="{{ .RelPermalink }}" class="tool-card-item">
-                <div class="tool-card-icon">
-                    {{ partial "helper/icon" "tools" }}
-                </div>
-                <div class="tool-card-body">
-                    <h3 class="tool-card-title">{{ .Title }}</h3>
-                    {{- with .Params.description -}}
-                    <p class="tool-card-desc">{{ . }}</p>
-                    {{- end -}}
-                </div>
-            </a>
-            {{ end }}
-        </div>
-    </section>
-    {{- end -}}
-
     {{- partial "footer/footer" . -}}
 {{ end }}
 

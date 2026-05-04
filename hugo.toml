@@ -1,6 +1,6 @@
 baseURL = 'https://blog.daiwus.cn/'
 languageCode = 'zh-CN'
-title = 'InforMatrix'
+title = 'Daiwus'
 theme = 'stack'
 
 publishDir = 'docs'
@@ -10,10 +10,14 @@ themesDir = 'themes'
 [markup.goldmark.renderer]
   unsafe = true
 
+[markup.highlight]
+  lineNos = true
+  lineNumbersInTable = true
+
 [params]
   # ── 站点信息 ──
   mainSections = ["posts"]
-  description = "陆柒的个人博客 — 记录学习、分享知识"
+  description = "Daiwus的个人博客 — 记录学习、分享知识"
 
   # ── 页脚 ──
   [params.footer]
@@ -36,6 +40,10 @@ themesDir = 'themes'
     headingAnchor = true
     toc = true
     readingTime = true
+
+  [params.article.list]
+    showTags = true
+
 
   # ── 配色（切换按钮 + 默认 auto） ──
   [params.colorScheme]
@@ -123,9 +131,9 @@ themesDir = 'themes'
 [[menu.social]]
   name = "CSDN"
   url = "https://blog.csdn.net/cumtLeibnizDavid"
-  params.icon = "link"
+  params.icon = "csdn"
 
 [[menu.social]]
   name = "Email"
   url = "mailto:shendaiwu@163.com"
-  params.icon = "link"
+  params.icon = "email"

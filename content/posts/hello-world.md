@@ -3,7 +3,7 @@ title: "你好，世界"
 date: 2026-05-01T16:00:00+08:00
 lastmod: 2026-05-01T16:00:00+08:00
 tags: ["Hugo", "博客"]
-categories: ["开发日志"]
+categories: ["日志"]
 image: ""
 draft: false
 ---

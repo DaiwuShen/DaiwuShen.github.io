@@ -1,15 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>Categories on InforMatrix</title>
+        <title>Categories on Daiwus</title>
         <link>https://blog.daiwus.cn/categories/</link>
-        <description>Recent content in Categories on InforMatrix</description>
+        <description>Recent content in Categories on Daiwus</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>zh-CN</language>
-        <lastBuildDate>Fri, 01 May 2026 16:00:00 +0800</lastBuildDate><atom:link href="https://blog.daiwus.cn/categories/index.xml" rel="self" type="application/rss+xml" /><item>
-            <title>开发日志</title>
-            <link>https://blog.daiwus.cn/categories/%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97/</link>
+        <lastBuildDate>Mon, 04 May 2026 21:17:00 +0800</lastBuildDate><atom:link href="https://blog.daiwus.cn/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+            <title>日志</title>
+            <link>https://blog.daiwus.cn/categories/%E6%97%A5%E5%BF%97/</link>
             <pubDate>Fri, 01 May 2026 16:00:00 +0800</pubDate>
-            <guid>https://blog.daiwus.cn/categories/%E5%BC%80%E5%8F%91%E6%97%A5%E5%BF%97/</guid>
+            <guid>https://blog.daiwus.cn/categories/%E6%97%A5%E5%BF%97/</guid>
+            <description></description>
+        </item><item>
+            <title>Cpp</title>
+            <link>https://blog.daiwus.cn/categories/cpp/</link>
+            <pubDate>Fri, 22 Mar 2024 03:00:00 +0800</pubDate>
+            <guid>https://blog.daiwus.cn/categories/cpp/</guid>
+            <description></description>
+        </item><item>
+            <title>计算机</title>
+            <link>https://blog.daiwus.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/</link>
+            <pubDate>Fri, 22 Mar 2024 03:00:00 +0800</pubDate>
+            <guid>https://blog.daiwus.cn/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/</guid>
             <description></description>
         </item></channel>
 </rss>
